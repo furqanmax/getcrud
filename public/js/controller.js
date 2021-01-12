@@ -76,8 +76,6 @@ function openCode(evt, codeTab) {
 function fun_handle() {
 
 
-
-
     var indexc = document.getElementById("indexc");
     var index = document.getElementById("index");
 
@@ -645,17 +643,36 @@ function aj() {
 
     // var inputs = document.getElementById('allfields').getElementsByTagName('input');
     // console.log(inputs.tablename.value);
-    var controllercode = document.getElementById('Controller').textContent;
-    console.log(controllercode.toString());
+
+
+    event.preventDefault();
     $.ajax({
-        url: "savefile",
-        type: "get",
+        url: "makecontroller",
+        method: 'get',
         contentType: "application/json",
-        dataType: 'JSON',
-        data: { message: document.getElementById('Controller').textContent },
+        data: $('#tableForm').serialize(),
+        dataType: 'json',
         success: function(data) {
+            //do whatever you want
+            console.log(data)
             $(".writeinfo").append(data.msg);
         }
-    });
+    })
+
+
+
+
+    // var controllercode = document.getElementById('Controller').textContent;
+    // console.log(controllercode.toString());
+    // $.ajax({
+    //     url: "savefile",
+    //     type: "get",
+    //     contentType: "application/json",
+    //     dataType: 'JSON',
+    //     data: { message: document.getElementById('Controller').textContent },
+    //     success: function(data) {
+    //         $(".writeinfo").append(data.msg);
+    //     }
+    // });
 
 }
