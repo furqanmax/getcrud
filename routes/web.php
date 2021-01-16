@@ -22,3 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/savefile', 'HomeController@savefile');
 Route::get('/makecontroller', 'HomeController@makecontroller');
+Route::get('/makecontrollerclient', 'HomeController@makecontrollerclient');
+Route::get('/makecontrollerserver', 'HomeController@makecontrollerserver');

@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Storage;
+use File;
+use App\Traits\getDataTrait;
+use App\Traits\laravelTrait;
+
+
 class HomeController extends Controller
 {
+
+    
+
     /**
      * Create a new controller instance.
      *
@@ -40,28 +48,69 @@ class HomeController extends Controller
         
     }
 
-    
-    public function makecontroller(Request $request)
+
+
+    public function makecontrollerclient(Request $request)
     {
-        if($request->ajax())
-        {
-            $mytext= $request->mytext;
+        // code is generated in javascript at client side and complet code is sent 
+
+        $response = array(
+            'status' => 'success',
+            'msg' => $request->message,
+        );
+        Storage::append('second.txt', $request->message);
+
+    }
+
+    use getDataTrait;
+    use laravelTrait;
+    public function makecontrollerserver(Request $request)
+    {
+       
+        
+        $index = "";
+
+        //  code is generated at server side
+        $getCheckboxes = $this->getControllerCheckBox($request);
+        $TableName = $this->getTable($request);
+        $folderName = $this->getfolder($request);
+        $allcolumns = $this->getColumns($request); 
+
+        $controllerCode = $this->makeController($TableName, $folderName, $allcolumns); 
+
+        $controllerCode = $this->makeTable($TableName, $folderName, $allcolumns);
+
+        list($APIcontrollercode, $APIResourcecode) = $this->makeAPI($TableName, $folderName, $allcolumns); 
+
+        $controllerCode .= $APIcontrollercode.$APIResourcecode;
+
+        // foreach($allcolumns as $value){
+        //     $index .= '$' . $value . '->' . $value . ' = $request->' . $value . ';<br>';
+        // }
+        // $index = "";
+        // foreach ($request->mytext as $key => $value) {
+        
+        //     // ProductStock::create($value);
+        //     // Storage::put('second.txt', $value);
+
             
+
+        //     foreach($value as $v){
+
+        //         $index .= '
+
+        //                 $' . $v . '->' . $v . ' = $request->' . $v . ';<br>';
+                
+        //     }
+
+
+            // $data =  $value; 
+            
+        // }
+        Storage::append('second.txt', $controllerCode);
+        return response($controllerCode);
+        // // Storage::put('second.txt', $data);
+        
        
-            for($count = 0; $count < count($mytext); $count++)
-            {
-             $data = array(
-              'mytext' => $mytext[$count],
-             );
-       
-             $insert_data[] = $data; 
-            }
-       
-            // ::insert($insert_data);
-            Storage::put('second.txt', $insert_data);
-            return response()->json([
-             'success'  => ' Saved Successfully!'
-            ]);
-           }
     }
 }

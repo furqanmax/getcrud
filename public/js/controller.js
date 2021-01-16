@@ -179,7 +179,7 @@ function handle(e) {
 
             // textbox.focus();
             // textbox.scrollIntoView();
-            $(wrapper).append('<div draggable="true" ondragstart="drag(event)"><input type="text" placeholder="column name" id="' + x + '" name="mytext[]" autofocus onkeypress="handle(event)" onkeypress="" oninput="myFunction()"/> <input type="checkbox" id="f' + x + '" onclick="myFunction()"><label for="f' + x + '">file</label>&nbsp&nbsp&nbsp&nbsp <input type="checkbox" id="r' + x + '" onclick="myFunction()"><label for="r' + x + '">required</label></div>'); //add input box
+            $(wrapper).append('<div draggable="true" ondragstart="drag(event)"><input type="text" placeholder="column name" id="' + x + '" name="textfieldcolumn[' + x + ']" autofocus onkeypress="handle(event)" onkeypress="" oninput="myFunction()"/> <input type="checkbox" id="f' + x + '" name="checkboxfile[' + x + ']" onclick="myFunction()"><label for="f' + x + '">file</label>&nbsp&nbsp&nbsp&nbsp <input type="checkbox" id="r' + x + '" name="checkbioxrequired[' + x + ']" onclick="myFunction()"><label for="r' + x + '">required</label></div>'); //add input box
             document.getElementById(x.toString()).focus();
             myFunction();
         }
@@ -188,26 +188,26 @@ function handle(e) {
 
 
 
-$(document).ready(function() {
-    var max_fields = 50; //maximum input boxes allowed
-    var wrapper = $(".input_fields_wrap"); //Fields wrapper
-    var add_button = $(".add_field_button"); //Add button ID
+// $(document).ready(function() {
+//     var max_fields = 50; //maximum input boxes allowed
+//     var wrapper = $(".input_fields_wrap"); //Fields wrapper
+//     var add_button = $(".add_field_button"); //Add button ID
 
-    //initlal text box count
-    $(add_button).click(function(e) { //on add input button click
-        e.preventDefault();
-        if (x < max_fields) { //max input box allowed
-            x++; //text box increment
-            $(wrapper).append('<div><input type="text" id="' + x + '" name="mytext[]" onkeypress="" oninput="myFunction()"/><button onclick="" class="remove_field">x</button></div>&nbsp&nbsp'); //add input box
-        }
-    });
+//     //initlal text box count
+//     $(add_button).click(function(e) { //on add input button click
+//         e.preventDefault();
+//         if (x < max_fields) { //max input box allowed
+//             x++; //text box increment
+//             $(wrapper).append('<div><input type="text" id="' + x + '" name="mytext[]" onkeypress="" oninput="myFunction()"/><button onclick="" class="remove_field">x</button></div>&nbsp&nbsp'); //add input box
+//         }
+//     });
 
-    $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
-        e.preventDefault();
-        $(this).parent('div').remove();
-        x--;
-    })
-});
+//     $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+//         e.preventDefault();
+//         $(this).parent('div').remove();
+//         x--;
+//     })
+// });
 
 
 
@@ -571,6 +571,20 @@ public function delete($id)
 }
 
 
+function clientSideRendering() {
+    var controllercode = document.getElementById('Controller').textContent;
+
+    $.get('makecontrollerclient?message=' + controllercode)
+}
+
+function serverSideRendering() {
+    $.get('makecontrollerserver?' + $('#tableForm').serialize(), function(data) {
+        console.log(data);
+        document.getElementById("phpservercode").innerHTML = data;
+    })
+    hljs.highlightBlock(phpcode);
+}
+
 function aj() {
     // var textn = "helllllllllllll";
 
@@ -644,20 +658,9 @@ function aj() {
     // var inputs = document.getElementById('allfields').getElementsByTagName('input');
     // console.log(inputs.tablename.value);
 
+    // $.get('makecontroller?' + $('#tableForm').serialize())
+    // $("#tableForm").ajaxSubmit({ url: 'makecontroller', type: 'get' })
 
-    event.preventDefault();
-    $.ajax({
-        url: "makecontroller",
-        method: 'get',
-        contentType: "application/json",
-        data: $('#tableForm').serialize(),
-        dataType: 'json',
-        success: function(data) {
-            //do whatever you want
-            console.log(data)
-            $(".writeinfo").append(data.msg);
-        }
-    })
 
 
 

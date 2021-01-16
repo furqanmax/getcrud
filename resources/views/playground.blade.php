@@ -24,13 +24,15 @@
 
 
     <div id="allfields" style="width: 45%; float: left;">
-        <button class="tablinks" onclick="aj()">Toggle dark mode</button>
+        <button class="tablinks" onclick="clientSideRendering()">client Side Rendering</button>
+        <button class="tablinks" onclick="serverSideRendering()">server Side Rendering</button>
         <div>
             <h1 id="titles" style="margin-bottom: 0px;">CRUD maker</h1>
 
             <p style="font-size: 14px; margin-top: 0px;">Write table name and columns in the text field.</p>
         </div>
-    <form id ="tableForm">
+    <form id ="tableForm" action="makecontroller" method="GET">
+        @csrf
         <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAll()">
         <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
         <input type="checkbox" checked="true" id="createc" name="createc" onclick="fun_handle()"> <label for="createc"> create </label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -42,18 +44,19 @@
 
         <br>
         <input type="text" placeholder="Table name" autofocus="" onkeypress="tablehandle(event)" id="tablename" name="tablename" oninput="myFunction()">
-        <input type="text" placeholder="Folder name" id="folder" name="folder" oninput="myFunction()">
+        <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()">
         <div class="input_fields_wrap" ondrop="drop(event)" ondragover="allowDrop(event)">
             <!-- <button class="add_field_button">Add col</button> -->
             <div id="hcol" draggable="true" ondragstart="drag(event)" style="display: none;">
-                <input type="text" id="0"  placeholder="column name" autofocus="" onkeypress="handle(event)" name="mytext[]" oninput="myFunction()">
-                <input type="checkbox" id="f0" name="f0" onclick="myFunction()">
+                <input type="text" id="0"  placeholder="column name" autofocus="" onkeypress="handle(event)" name="textfieldcolumn[0]" oninput="myFunction()">
+                <input type="checkbox" id="f0" name="checkboxfile[0]" onclick="myFunction()">
                 <label for="f0">file</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="checkbox" id="r0" name="r0" onclick="myFunction()">
+                <input type="checkbox" id="r0" name="checkbioxrequired[0]" onclick="myFunction()">
                 <label for="r0">required</label>
             </div>
             <p id="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
         </div>
+        <button type="submit">submit</button>
     </form>
     </div>
     <div style="width: 50%; float: left; color: #444; margin-left: 20px;">
@@ -83,6 +86,9 @@
             <pre id="update"></pre>
             <pre id="deletes"></pre>
             </code>
+            </pre>
+            <pre>
+                <code id="phpservercode"></code>
             </pre>
         </div>
 
