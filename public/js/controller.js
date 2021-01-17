@@ -20,7 +20,58 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-function selectAll() {
+
+
+
+
+
+
+
+/* Made with love by @fitri
+ https://codepen.io/fitri/full/oWovYj/ */
+
+function enableDragSort(listClass) {
+    const sortableLists = document.getElementsByClassName(listClass);
+    Array.prototype.map.call(sortableLists, (list) => { enableDragList(list) });
+}
+
+function enableDragList(list) {
+    Array.prototype.map.call(list.children, (item) => { enableDragItem(item) });
+}
+
+function enableDragItem(item) {
+    item.setAttribute('draggable', true)
+    item.ondrag = handleDrag;
+    item.ondragend = handleDrop;
+}
+
+function handleDrag(item) {
+    const selectedItem = item.target,
+        list = selectedItem.parentNode,
+        x = event.clientX,
+        y = event.clientY;
+
+    selectedItem.classList.add('drag-sort-active');
+    let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+
+    if (list === swapItem.parentNode) {
+        swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+        list.insertBefore(selectedItem, swapItem);
+    }
+}
+
+function handleDrop(item) {
+    item.target.classList.remove('drag-sort-active');
+    serverSideRendering();
+}
+
+(() => { enableDragSort('drag-sort-enable') })();
+
+
+
+
+
+function selectAllCheckboxes() {
     if (selectAll.checked == true) {
         indexc.checked = true;
         createc.checked = true;
@@ -29,7 +80,7 @@ function selectAll() {
         editc.checked = true;
         updatec.checked = true;
         deletec.checked = true;
-        selectAll.checked = false;
+        selectAll.checked = true;
         fun_handle();
     } else {
         indexc.checked = false;
@@ -39,7 +90,7 @@ function selectAll() {
         editc.checked = false;
         updatec.checked = false;
         deletec.checked = false;
-        selectAll.checked = true;
+        selectAll.checked = false;
         fun_handle();
     }
 }
@@ -179,9 +230,12 @@ function handle(e) {
 
             // textbox.focus();
             // textbox.scrollIntoView();
-            $(wrapper).append('<div draggable="true" ondragstart="drag(event)"><input type="text" placeholder="column name" id="' + x + '" name="textfieldcolumn[' + x + ']" autofocus onkeypress="handle(event)" onkeypress="" oninput="myFunction()"/> <input type="checkbox" id="f' + x + '" name="checkboxfile[' + x + ']" onclick="myFunction()"><label for="f' + x + '">file</label>&nbsp&nbsp&nbsp&nbsp <input type="checkbox" id="r' + x + '" name="checkbioxrequired[' + x + ']" onclick="myFunction()"><label for="r' + x + '">required</label></div>'); //add input box
+            serverSideRendering();
+            $(wrapper).append('<li class="list-item dragdots" draggable="true" ondragstart="drag(event)"><input type="text" placeholder="column name" id="' + x + '" name="textfieldcolumn[' + x + ']" autofocus onkeypress="handle(event)" onkeypress="" oninput="myFunction()"/> <input type="checkbox" id="f' + x + '" name="checkboxfile[' + x + ']" onclick="myFunction()"><label for="f' + x + '">file</label>&nbsp&nbsp&nbsp&nbsp <input type="checkbox" id="r' + x + '" name="checkbioxrequired[' + x + ']" onclick="myFunction()"><label for="r' + x + '">required</label></li>'); //add input box
             document.getElementById(x.toString()).focus();
+
             myFunction();
+
         }
     }
 }
@@ -577,12 +631,28 @@ function clientSideRendering() {
     $.get('makecontrollerclient?message=' + controllercode)
 }
 
-function serverSideRendering() {
-    $.get('makecontrollerserver?' + $('#tableForm').serialize(), function(data) {
-        console.log(data);
-        document.getElementById("phpservercode").innerHTML = data;
-    })
-    hljs.highlightBlock(phpcode);
+async function serverSideRendering() {
+
+    var res = $.get('makecontrollerserver?' + $('#tableForm').serialize(), function(data) {});
+    let response = await res;
+    // console.log(res);
+    var code = res.responseJSON;
+
+    document.getElementById("phpservercode").innerHTML = code.controller_code;
+
+    var tablecode = code.table_code.replaceAll("<", "&lt;");
+    var tablecodereplaced = tablecode.replaceAll(">", "&gt;");
+    document.getElementById("table_code").innerHTML = tablecodereplaced;
+
+    document.getElementById("API_controller_code").innerHTML = code.API_controller_code;
+
+    document.getElementById("API_resource_code").innerHTML = code.API_resource_code;
+
+
+    hljs.highlightBlock(phpservercode);
+    hljs.highlightBlock(table_code);
+    hljs.highlightBlock(API_controller_code);
+    hljs.highlightBlock(API_resource_code);
 }
 
 function aj() {

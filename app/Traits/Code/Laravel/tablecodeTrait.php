@@ -15,10 +15,13 @@ trait tablecodeTrait {
             // list($validate, $request, $destroyFileCode) = $this->checkColumnValidation($table, $value, $validate, $request, $destroyFileCode);
 
             if(isset($value['file'])){
-                $valueCode .= '<td><img src="{{asset("uploads/'.Str::lower(Str::singular($tablename)).'/".$'.Str::lower(Str::singular($tablename)).'->'. $value['column'] .' )}}" width=100></td><br>';
+                $valueCode .= '
+                <td><img src="{{asset("uploads/'.Str::lower(Str::singular($tablename)).'/".$'.Str::lower(Str::singular($tablename)).'->'. $value['column'] .' )}}" width=100></td>';
             }else{
-                $valueCode .="<td>{{\$".Str::lower(Str::singular($tablename))."->". $value['column'] ."}}</td><br>" ;
-                $ColumnCode .= "<th> ". $value['column'] . "</th><br>";
+                $valueCode .="
+                <td>{{\$".Str::lower(Str::singular($tablename))."->". $value['column'] ."}}</td>" ;
+                $ColumnCode .= "
+                <th> ". $value['column'] . "</th>";
             }
 
         }
@@ -98,10 +101,12 @@ trait tablecodeTrait {
 
 EOD;
 
-$replaced = Str::of($code)->replace('<', '&lt;');
-$replaceds = Str::of($replaced)->replace('>', '&gt;');
+// $replaced = Str::of($code)->replace('<', '&lt;');
+// $replaceds = Str::of($replaced)->replace('>', '&gt;');
 // print_r($replaced);
-return $replaceds;
+// return $replaceds;
+
+return $code;
 
     }
 

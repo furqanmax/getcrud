@@ -78,11 +78,11 @@ class HomeController extends Controller
 
         $controllerCode = $this->makeController($TableName, $folderName, $allcolumns); 
 
-        $controllerCode = $this->makeTable($TableName, $folderName, $allcolumns);
+        $tableCode = $this->makeTable($TableName, $folderName, $allcolumns);
 
         list($APIcontrollercode, $APIResourcecode) = $this->makeAPI($TableName, $folderName, $allcolumns); 
 
-        $controllerCode .= $APIcontrollercode.$APIResourcecode;
+        print_r($APIResourcecode);
 
         // foreach($allcolumns as $value){
         //     $index .= '$' . $value . '->' . $value . ' = $request->' . $value . ';<br>';
@@ -107,8 +107,18 @@ class HomeController extends Controller
             // $data =  $value; 
             
         // }
-        Storage::append('second.txt', $controllerCode);
-        return response($controllerCode);
+
+
+        // Storage::append('second.txt', $controllerCode);
+        // return response($controllerCode);
+
+
+        return response()->json([
+            'controller_code' => $controllerCode,
+            'table_code' => $tableCode,
+            'API_controller_code' => $APIcontrollercode,
+            'API_resource_code' => $APIResourcecode,
+        ]);
         // // Storage::put('second.txt', $data);
         
        

@@ -18,7 +18,7 @@ trait getDataTrait {
         $AllCheckBoxes = $request->editc;
         $AllCheckBoxes = $request->updatec;
         $AllCheckBoxes = $request->deletec;
-        print_r($AllCheckBoxes);
+        // print_r($AllCheckBoxes);
         // return $AllCheckBoxes;
     }
 
@@ -26,7 +26,7 @@ trait getDataTrait {
 
         $foldername = "";
         $foldername = $request->foldername;
-        
+
         $foldername = $foldername.".";
 
         return $foldername;
