@@ -140,7 +140,15 @@
 
         <div id="Form" class="tabcontent">
             <h3>form</h3>
-            <p>Comming soon...</p>
+            <p>Create form code</p>
+            <pre>
+                <code id="Create_form_code"> </code>
+            </pre>
+
+            <p>Edit form code</p>
+            <pre>
+                <code id="Edit_form_code"> </code>
+            </pre>
         </div>
 
 

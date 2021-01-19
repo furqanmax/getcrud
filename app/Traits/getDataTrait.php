@@ -27,8 +27,12 @@ trait getDataTrait {
         $foldername = "";
         $foldername = $request->foldername;
 
-        $foldername = $foldername.".";
-
+        if ($foldername == ""){
+            $foldername = "";
+        }else{
+            $foldername = $foldername.".";
+        }
+        
         return $foldername;
     }
 
@@ -56,16 +60,6 @@ trait getDataTrait {
                 } 
             }
             
-            
-            
-            
-
-            // foreach($value as $v){
-
-            //     // $index .= '$' . $v . '->' . $v . ' = $request->' . $v . ';<br>';
-            //     $index[$i] = $v;
-            //     $i++;
-            // } 
 
         }
 // print_r($index);

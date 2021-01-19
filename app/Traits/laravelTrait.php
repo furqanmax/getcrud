@@ -5,12 +5,13 @@ namespace App\Traits;
 use App\Traits\Code\Laravel\controllercodeTrait;
 use App\Traits\Code\Laravel\tablecodeTrait;
 use App\Traits\Code\Laravel\APIcodeTrait;
+use App\Traits\Code\Laravel\formcodeTrait;
 
 
 
 trait laravelTrait {
  
-    use tablecodeTrait, controllercodeTrait, APIcodeTrait;
+    use tablecodeTrait, controllercodeTrait, APIcodeTrait, formcodeTrait;
 
 
     public function composeController($tablename, $columnname) {
@@ -22,21 +23,33 @@ trait laravelTrait {
         
     }
 
+    public function makeForm($tablename, $columnname) {
+
+        list($validate, $createcolumns, $editcolumns) = $this->formmakeColumns($tablename, $columnname);
+
+        $createcolumnscode = $this->createform($tablename, $createcolumns);
+
+        $editcolumnscode = $this->editform($tablename, $editcolumns);
+
+        return[$createcolumnscode, $editcolumnscode];
+        
+    }
+
     public function makeAPI($tablename, $foldername, $columnname) {
 
         $APIResourceCode = "";
         $APIControllerCode = "";
 
-        list($validate, $request, $destroyFileCode, $apiResourceCode) = $this->APImakeColumns($tablename, $columnname);
-
+        list($validate, $request, $destroyFileCode, $APIResourceCode) = $this->APImakeColumns($tablename, $columnname);
+        
         $code = $this->APIindexcode($tablename, $foldername, $columnname);
         
         $code .= $this->APIstorecode($tablename, $foldername, $validate, $request);
         $code .= $this->APIupdatecode($tablename, $foldername, $validate, $request);
         
         $code .= $this->APIdestroycode($tablename, $destroyFileCode);
-
-        $ResourceCode = $this->APIResource($apiResourceCode);
+        
+        $ResourceCode = $this->APIResource($APIResourceCode);
         $ControllerCode = $code;
         return [$ControllerCode, $ResourceCode];
     }

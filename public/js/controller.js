@@ -644,6 +644,14 @@ async function serverSideRendering() {
     var tablecodereplaced = tablecode.replaceAll(">", "&gt;");
     document.getElementById("table_code").innerHTML = tablecodereplaced;
 
+    var create_form_code = code.Create_form.replaceAll("<", "&lt;");
+    var create_form_code_replaced = create_form_code.replaceAll(">", "&gt;");
+    document.getElementById("Create_form_code").innerHTML = create_form_code_replaced;
+
+    var edit_form_code = code.Edit_form.replaceAll("<", "&lt;");
+    var edit_form_code_replaced = edit_form_code.replaceAll(">", "&gt;");
+    document.getElementById("Edit_form_code").innerHTML = edit_form_code_replaced;
+
     document.getElementById("API_controller_code").innerHTML = code.API_controller_code;
 
     document.getElementById("API_resource_code").innerHTML = code.API_resource_code;
@@ -653,6 +661,8 @@ async function serverSideRendering() {
     hljs.highlightBlock(table_code);
     hljs.highlightBlock(API_controller_code);
     hljs.highlightBlock(API_resource_code);
+    hljs.highlightBlock(Create_form_code);
+    hljs.highlightBlock(Edit_form_code);
 }
 
 function aj() {

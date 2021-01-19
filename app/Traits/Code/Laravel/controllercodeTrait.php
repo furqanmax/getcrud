@@ -293,16 +293,16 @@ EOD;
         
         
         public function destroy(\$id)
-{
-  $$lowerplural = $ucfirstsingular::findOrFail(\$id);
-    $destroyFileCode 
-  if( $ucfirstsingular::where('id',\$id)->delete()){
-   return redirect()->back()->with('success','  $lowerplural  deleted successfully.');
-  }
-  else{
-      return redirect()->back()->with('unsuccess','Failed try again.');
-  }
-}
+        {
+            $$lowerplural = $ucfirstsingular::findOrFail(\$id);
+                $destroyFileCode 
+            if( $ucfirstsingular::where('id',\$id)->delete()){
+                return redirect()->back()->with('success','  $lowerplural  deleted successfully.');
+            }
+            else{
+                return redirect()->back()->with('unsuccess','Failed try again.');
+            }
+        }
 
 EOD;
 

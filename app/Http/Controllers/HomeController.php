@@ -80,9 +80,11 @@ class HomeController extends Controller
 
         $tableCode = $this->makeTable($TableName, $folderName, $allcolumns);
 
-        list($APIcontrollercode, $APIResourcecode) = $this->makeAPI($TableName, $folderName, $allcolumns); 
+        list($APIcontrollercode, $APIResourcecode) = $this->makeAPI($TableName, $folderName, $allcolumns);
+        
+        list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
 
-        print_r($APIResourcecode);
+        // print_r($APIResourcecode);
 
         // foreach($allcolumns as $value){
         //     $index .= '$' . $value . '->' . $value . ' = $request->' . $value . ';<br>';
@@ -118,6 +120,8 @@ class HomeController extends Controller
             'table_code' => $tableCode,
             'API_controller_code' => $APIcontrollercode,
             'API_resource_code' => $APIResourcecode,
+            'Create_form' => $createFormCode,
+            'Edit_form' => $editFormCode, 
         ]);
         // // Storage::put('second.txt', $data);
         

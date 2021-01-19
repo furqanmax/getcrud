@@ -27,6 +27,7 @@ trait APIcodeTrait {
         }
 
 EOD;
+        return $code;
     }
 
 
@@ -84,7 +85,8 @@ EOD;
             $request .= "
                 $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
             
-            $apiResourceCode .= "'". $value['column'] ."' => \$this->". $value['column'] .",";
+            $apiResourceCode .= "
+                '". $value['column'] ."' => \$this->". $value['column'] .",";
         }
 
         return [$validate, $request, $destroyFileCode, $apiResourceCode];
@@ -123,6 +125,7 @@ EOD;
 EOD;
 
         $apiResourcefileCode = <<<EOD
+
         '$column' => \$url."/uploads/$table/".\$this->$column,
 EOD;
     
