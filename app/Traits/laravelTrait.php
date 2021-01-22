@@ -6,12 +6,15 @@ use App\Traits\Code\Laravel\controllercodeTrait;
 use App\Traits\Code\Laravel\tablecodeTrait;
 use App\Traits\Code\Laravel\APIcodeTrait;
 use App\Traits\Code\Laravel\formcodeTrait;
+use App\Traits\Code\Laravel\writetofileTrait;
+
+use App\Traits\makeZipTrait;
 
 
 
 trait laravelTrait {
  
-    use tablecodeTrait, controllercodeTrait, APIcodeTrait, formcodeTrait;
+    use tablecodeTrait, controllercodeTrait, APIcodeTrait, formcodeTrait, writetofileTrait, makeZipTrait;
 
 
     public function composeController($tablename, $columnname) {
@@ -84,6 +87,22 @@ trait laravelTrait {
         $controller_code .= $code;
 
         return $controller_code;
+    }
+
+    public function startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode){
+        // $code = $this->makeDirectories($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
+        $code = $this->writeController($TableName, $folderName, $controllerCode);
+        $code .= $this->writeTable($TableName, $folderName, $tableCode);
+        $code .= $this->writecreate($TableName, $folderName, $createFormCode);
+        $code .= $this->writeEdit($TableName, $folderName, $editFormCode);
+        $code = $this->downloadZip($productPath = '', $dirName = '', $overwrite = false);
+        return $code;
+    }
+
+    public function makeZip(){
+        $getzipstatus = $this->downloadZip($productPath = '', $dirName = '', $overwrite = false);
+
+        return $getzipstatus;
     }
 
 

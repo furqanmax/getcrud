@@ -656,6 +656,8 @@ async function serverSideRendering() {
 
     document.getElementById("API_resource_code").innerHTML = code.API_resource_code;
 
+    document.getElementById("Download_zip").href = code.Download_zip;
+
 
     hljs.highlightBlock(phpservercode);
     hljs.highlightBlock(table_code);

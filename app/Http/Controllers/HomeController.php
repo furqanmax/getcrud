@@ -62,6 +62,15 @@ class HomeController extends Controller
 
     }
 
+
+    public function downloadFile(){
+
+        
+        $name ="username/res.zip";
+        return Storage::download($name);
+
+    }
+
     use getDataTrait;
     use laravelTrait;
     public function makecontrollerserver(Request $request)
@@ -113,8 +122,16 @@ class HomeController extends Controller
 
         // Storage::append('second.txt', $controllerCode);
         // return response($controllerCode);
-
-
+        
+        $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
+        // print_r($abc);
+        // $abc = response()->download(storage_path($abc));
+        // print_r($abc);
+        // $abc = storage_path($abc);
+        // $abc = Storage::download($abc);
+        
+        $filename = "download";
+        
         return response()->json([
             'controller_code' => $controllerCode,
             'table_code' => $tableCode,
@@ -122,6 +139,7 @@ class HomeController extends Controller
             'API_resource_code' => $APIResourcecode,
             'Create_form' => $createFormCode,
             'Edit_form' => $editFormCode, 
+            'Download_zip' => $filename,
         ]);
         // // Storage::put('second.txt', $data);
         

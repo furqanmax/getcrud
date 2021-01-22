@@ -26,6 +26,7 @@
     <div id="allfields" style="width: 45%; float: left;">
         <button class="tablinks" onclick="clientSideRendering()">client Side Rendering</button>
         <button class="tablinks" onclick="serverSideRendering()">server Side Rendering</button>
+        <a href="" id="Download_zip">Download zip</a>
         <div>
             <h1 id="titles" style="margin-bottom: 0px;">CRUD maker</h1>
 
