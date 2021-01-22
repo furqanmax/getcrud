@@ -24,4 +24,5 @@ Route::get('/savefile', 'HomeController@savefile');
 Route::get('/makecontroller', 'HomeController@makecontroller');
 Route::get('/makecontrollerclient', 'HomeController@makecontrollerclient');
 Route::get('/makecontrollerserver', 'HomeController@makecontrollerserver');
-Route::get('/download', 'HomeController@downloadFile');
+Route::get('/writAndDownloadZip', 'HomeController@writAndDownloadZip');
+Route::get('/download', 'HomeController@downloadFile')->name("download");

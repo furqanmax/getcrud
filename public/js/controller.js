@@ -667,7 +667,19 @@ async function serverSideRendering() {
     hljs.highlightBlock(Edit_form_code);
 }
 
+function writeanddownloadzip() {
+    var res = $.get('writAndDownloadZip?' + $('#tableForm').serialize(), function(data) {
+        window.location = 'download';
+    });
+    let response = res;
+    // document.getElementById("zpiresponce").innerHTML = code.zipes;
+}
+
 function aj() {
+
+    // var res = $.get('writAndDownloadZip?' + $('#tableForm').serialize(), function(data) {});
+    // let response = res;
+    // document.getElementById("zpiresponce").innerHTML = code.zipes;
     // var textn = "helllllllllllll";
 
 

@@ -12,7 +12,7 @@ use App\Traits\laravelTrait;
 class HomeController extends Controller
 {
 
-    
+    use getDataTrait, laravelTrait;
 
     /**
      * Create a new controller instance.
@@ -65,14 +65,42 @@ class HomeController extends Controller
 
     public function downloadFile(){
 
+        // $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
         
         $name ="username/res.zip";
         return Storage::download($name);
 
     }
 
-    use getDataTrait;
-    use laravelTrait;
+    public function writAndDownloadZip(Request $request)
+    {
+        $index = "";
+
+        //  code is generated at server side
+        $getCheckboxes = $this->getControllerCheckBox($request);
+        $TableName = $this->getTable($request);
+        $folderName = $this->getfolder($request);
+        $allcolumns = $this->getColumns($request); 
+
+        $controllerCode = $this->makeController($TableName, $folderName, $allcolumns); 
+
+        $tableCode = $this->makeTable($TableName, $folderName, $allcolumns);
+
+        list($APIcontrollercode, $APIResourcecode) = $this->makeAPI($TableName, $folderName, $allcolumns);
+        
+        list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
+
+        $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
+
+        $name ="username/res.zip";
+        return "File are ready to download";
+        // // Storage::put('second.txt', $data);
+        
+    }
+
+
+
+
     public function makecontrollerserver(Request $request)
     {
        
@@ -123,7 +151,7 @@ class HomeController extends Controller
         // Storage::append('second.txt', $controllerCode);
         // return response($controllerCode);
         
-        $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
+        // $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
         // print_r($abc);
         // $abc = response()->download(storage_path($abc));
         // print_r($abc);
