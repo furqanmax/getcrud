@@ -62,6 +62,7 @@ trait makeZipTrait {
                         // $pos = strpos($zipProductPath , "/tmp/") + 5;
                         // $fileDestination = substr($pathName, $pos);
 
+                        
                         $pos = strstr($pathName ,"code");
                         $pos = substr($pos,5);
                         $fileDestination = $pos;
