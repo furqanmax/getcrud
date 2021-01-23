@@ -34,35 +34,53 @@
 
             <p style="font-size: 14px; margin-top: 0px;">Write table name and columns in the text field.</p>
         </div>
-    <form id ="tableForm" action="makecontroller" method="GET">
-        @csrf
-        <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
-        <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="createc" name="createc" onclick="fun_handle()"> <label for="createc"> create </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="storec" name="storec" onclick="fun_handle()"> <label for="storec"> store </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="showc" name="showc" onclick="fun_handle()"> <label for="showc"> show </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="editc" name="editc" onclick="fun_handle()"> <label for="editc"> edit </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="updatec" name="updatec" onclick="fun_handle()"> <label for="updatec"> update </label> &nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="checkbox" checked="true" id="deletec" name="deletec" onclick="fun_handle()"> <label for="deletec"> delete </label> &nbsp;&nbsp;&nbsp;&nbsp;
 
-        <br>
-        <input type="text" placeholder="Table name" autofocus="" onkeypress="tablehandle(event)" id="tablename" name="tablename" oninput="myFunction()">
-        <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()">
-        <section class="drag-sort-enable">
-            <ul class="input_fields_wrap drag-sort-enable" >
-                <!-- <button class="add_field_button">Add col</button> -->
-                <li class="list-item dragdots" id="hcol"  style="display: none;">
-                    <input type="text" id="0"  placeholder="column name" autofocus="" onkeypress="handle(event)" name="textfieldcolumn[0]" oninput="myFunction()">
-                    <input type="checkbox" id="f0" name="checkboxfile[0]" onclick="myFunction()">
-                    <label for="f0">file</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" id="r0" name="checkbioxrequired[0]" onclick="myFunction()">
-                    <label for="r0">required</label>
-                </li>
-                <p id="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
-            </ul>
-        </section>
-        <button type="submit">submit</button>
-    </form>
+        <div class="tab ">
+            <div  class="tab_wrap">
+                <div id="tabdivid0">
+                    <button id="tabbtn0"  class="tablelinks active" onclick="opentable(event, 'table0')" style="font-size: 13px;  ">Table0</button><button id="removetab0" onclick="removetab(event, this.id,0)">x</button>
+                </div>
+                
+            </div>
+            <button class="tablelinks"  onclick="addtable(event)">+</button>
+        </div>
+        <div class="table_wrap">
+            <div class="tablecontent" id="table0">
+                <form id ="tableForm0" action="makecontroller" method="GET">
+                    @csrf
+                    <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
+                    <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="createc" name="createc" onclick="fun_handle()"> <label for="createc"> create </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="storec" name="storec" onclick="fun_handle()"> <label for="storec"> store </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="showc" name="showc" onclick="fun_handle()"> <label for="showc"> show </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="editc" name="editc" onclick="fun_handle()"> <label for="editc"> edit </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="updatec" name="updatec" onclick="fun_handle()"> <label for="updatec"> update </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" checked="true" id="deletec" name="deletec" onclick="fun_handle()"> <label for="deletec"> delete </label> &nbsp;&nbsp;&nbsp;&nbsp;
+            
+                    <br>
+                    
+                    <section id="section0" class="drag-sort-enable">
+                        <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
+                            <li class="list-item dragdots" id="gggg0"  >
+                                <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id)" id="tablename0" name="tablename" oninput="myFunction()">
+                                <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()">
+                            </li>
+                            <!-- <button class="add_field_button">Add col</button> -->
+                            {{-- <li class="list-item dragdots" id="hcol0"  style="display: none;">
+                                <input type="text" id="0"  placeholder="column name" autofocus="" onkeypress="handle(event,this.id)" name="textfieldcolumn[0]" oninput="myFunction()">
+                                <input type="checkbox" id="f0" name="checkboxfile[0]" onclick="myFunction()">
+                                <label for="f0">file</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="checkbox" id="r0" name="checkbioxrequired[0]" onclick="myFunction()">
+                                <label for="r0">required</label>
+                            </li> --}}
+                            <p id="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
+                        </ul>
+                    </section>
+                </form>
+            </div>
+        </div>
+
+    
     </div>
     <div style="width: 50%; float: left; color: #444; margin-left: 20px;">
 

@@ -46,21 +46,23 @@ trait getDataTrait {
       //  return $request;
         $index = array();
         $i = 0;
-        foreach ($request->textfieldcolumn as $key => $value) {
-            $index[$key]['column']=$value;
-            if(isset($request->checkboxfile)){
-                if(array_key_exists($key,$request->checkboxfile)){
-                    $index[$key]['file']=$request->checkboxfile[$key];
+        if (!Empty($request->textfieldcolumn)){
+            foreach ($request->textfieldcolumn as $key => $value) {
+                $index[$key]['column']=$value;
+                if(isset($request->checkboxfile)){
+                    if(array_key_exists($key,$request->checkboxfile)){
+                        $index[$key]['file']=$request->checkboxfile[$key];
+                    }
                 }
-            }
 
-            if(isset($request->checkbioxrequired)){
-                if(array_key_exists($key, $request->checkbioxrequired)){
-                    $index[$key]['required']=$request->checkbioxrequired[$key];
-                } 
-            }
-            
+                if(isset($request->checkbioxrequired)){
+                    if(array_key_exists($key, $request->checkbioxrequired)){
+                        $index[$key]['required']=$request->checkbioxrequired[$key];
+                    } 
+                }
+                
 
+            }
         }
 // print_r($index);
         return $index;

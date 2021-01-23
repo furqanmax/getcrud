@@ -1159,3 +1159,71 @@ Execute Command
         
         php artisan migrate
 `);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var y = 0;
+
+function addtable(e) {
+    var max_fields = 10; //maximum input boxes allowed
+    var tablewrapper = $(".table_wrap"); //Fields wrapper
+    var tabwrapper = $(".tab_wrap");
+    var add_button = $(".add_field_button"); //Add button ID
+
+    e.preventDefault(); // Ensure it is only this code that runs
+
+
+    // document.getElementById("titles").style.display="none";
+    if (y < max_fields) { //max input box allowed
+        y++; //text box increment
+        // console.log(y.toString());
+
+        // textbox.focus();
+        // textbox.scrollIntoView();
+
+        $(tabwrapper).append('<button class="tablelinks" onclick="opentable(event, "table' + y + '")">Table' + y + '</button>'); //add input box
+        $(tablewrapper).append('<div class="tablecontent" style="display:none;" id="table' + y + '"> <p> Table ' + y + ' </p> </div> ');
+        // document.getElementById(x.toString()).focus();
+
+    }
+}
+
+function opentable(evt, tabletab) {
+    var i, tabcontent, tablelinks;
+    tabcontent = document.getElementsByClassName("tablecontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablelinks = document.getElementsByClassName("tablelinks");
+    for (i = 0; i < tablelinks.length; i++) {
+        tablelinks[i].className = tablelinks[i].className.replace(" active");
+    }
+    document.getElementById(tabletab).style.display = "block";
+    evt.currentTarget.className += " active";
+}

@@ -72,6 +72,7 @@ class HomeController extends Controller
 
     }
 
+
     public function writAndDownloadZip(Request $request)
     {
         $index = "";
@@ -94,7 +95,7 @@ class HomeController extends Controller
 
         $name ="username/res.zip";
         return "File are ready to download";
-        // // Storage::put('second.txt', $data);
+        // Storage::put('second.txt', $data);
         
     }
 
