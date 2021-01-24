@@ -39,6 +39,7 @@ trait getDataTrait {
     public function getTable($request) {
         $tabname = "";
         $tabname = $request->tablename;
+        // print_r($tabname."aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         return $tabname;
     }
 

@@ -204,22 +204,29 @@ function tablehandle(e, id) {
 
 var x = 0;
 
-function handle(e, id) {
+function handle(e, id, num) {
     var max_fields = 50; //maximum input boxes allowed
     var wrapper = $(".input_fields_wrap"); //Fields wrapper
     var add_button = $(".add_field_button"); //Add button ID
 
     var parentid = document.getElementById(id).parentElement.id;
     var parentid = document.getElementById(parentid).parentElement.id;
-    console.log(parentid);
+    // console.log(parentid);
 
     var renderform = document.getElementById(parentid).parentElement.id;
     var renderform = "#" + document.getElementById(renderform).parentElement.id;
-    console.log(renderform);
+    // console.log(renderform);
+
+
+
 
     if (e.keyCode === 13) {
         e.preventDefault(); // Ensure it is only this code that runs
-
+        var str = document.getElementById(id).id;
+        if (str.includes("tablename")) {
+            var text = document.getElementById(id).value;
+            document.getElementById("tabbtn" + num).innerHTML = text;
+        }
 
         // var txt = document.getElementById(x.toString()).value;
         // var len = txt.split(" ").length;
@@ -235,7 +242,7 @@ function handle(e, id) {
         // document.getElementById("titles").style.display="none";
         if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            console.log(x.toString());
+            // console.log(x.toString());
 
             // textbox.focus();
             // textbox.scrollIntoView();
@@ -324,7 +331,7 @@ async function serverSideRendering(renderform) {
 }
 
 function writeanddownloadzip() {
-    var res = $.get('writAndDownloadZip?' + $('#tableForm').serialize(), function(data) {
+    var res = $.get('writAndDownloadZip?' + $('#tableForm0').serialize(), function(data) {
         window.location = 'download';
     });
     let response = res;
@@ -431,6 +438,8 @@ function aj() {
 }
 
 var y = 0;
+var addtabletoarray = [];
+addtabletoarray.push(0);
 
 function addtable(e) {
     var max_fields = 10; //maximum input boxes allowed
@@ -471,8 +480,8 @@ function addtable(e) {
                    
                     <section id="section` + y + `" class="drag-sort-enable">
                         <ul id="ultableid` + y + `" class="input_fields_wrap drag-sort-enable" >
-                        <li class="list-item dragdots" id="gggg` + y + `"  >
-                            <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id)" id="tablename` + y + `" name="tablename" oninput="myFunction()">
+                        <li class="" id="gggg` + y + `"  >
+                            <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,` + y + `)" id="tablename` + y + `" name="tablename" oninput="myFunction()">
                             <input type="text" placeholder="Folder name" id="folder` + y + `" name="foldername" oninput="myFunction()">
                         </li>
                             <!-- <button class="add_field_button">Add col</button> -->
@@ -482,15 +491,18 @@ function addtable(e) {
                     </section>
                 </form>
         `;
-        $(tabwrapper).append('<div id="tabdivid' + y + '"><button class="tablelinks active"  onclick="opentable(event, \'table' + y + '\')" style="font-size: 13px;">Table' + y + '</button><button id="removetab' + y + '" onclick="removetab(event, this.id,' + y + ')">x</button></div>'); //add input box
+        $(tabwrapper).append('<div id="tabdivid' + y + '"><button id="tabbtn' + y + '" class="tablelinks active"  onclick="opentable(event, \'table' + y + '\',' + y + ')" style="font-size: 13px;">Table' + y + '</button><button id="removetab' + y + '" onclick="removetab(event, this.id,' + y + ')">x</button></div>'); //add input box
         $(tablewrapper).append('<div class="tablecontent" style="display:block;" id="table' + y + '">' + code + ' </div> ');
         document.getElementById("tablename" + y).focus();
         // document.getElementById(x.toString()).focus();
-
+        addtabletoarray.push(y);
     }
 }
 
-function opentable(evt, tabletab) {
+var previoustab = [];
+
+
+function opentable(evt, tabletab, formnumber) {
     var i, tabcontent, tablelinks;
     tabcontent = document.getElementsByClassName("tablecontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -502,6 +514,12 @@ function opentable(evt, tabletab) {
     }
     document.getElementById(tabletab).style.display = "block";
     evt.currentTarget.className += " active";
+    var renderform = "#tableForm" + formnumber;
+    // previoustab += formnumber;
+    // console.log(formnumber);
+    serverSideRendering(renderform);
+    previoustab.push(formnumber);
+
 }
 
 
@@ -509,7 +527,7 @@ function handleforms(e) {
     var max_fields = 50; //maximum input boxes allowed
     var wrapper = $(".input_fields_wrap"); //Fields wrapper
     var thisid = this.id;
-    console.log(thisid);
+    // console.log(thisid);
     var add_button = $(".add_field_button"); //Add button ID
     if (e.keyCode === 13) {
         e.preventDefault(); // Ensure it is only this code that runs
@@ -517,7 +535,7 @@ function handleforms(e) {
 
         var txt = document.getElementById(x.toString()).value;
         var len = txt.split(" ").length;
-        console.log(len < 1);
+        // console.log(len < 1);
         if (len >= 2) {
 
             alert("column name cannot have space");
@@ -529,7 +547,7 @@ function handleforms(e) {
         // document.getElementById("titles").style.display="none";
         if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            console.log(x.toString());
+            // console.log(x.toString());
 
             // textbox.focus();
             // textbox.scrollIntoView();
@@ -546,7 +564,7 @@ function handleforms(e) {
 function removecolumn(e, liid) {
     e.preventDefault();
     var parentid = "#" + document.getElementById(liid).parentElement.id;
-    console.log(parentid);
+    // console.log(parentid);
     $(parentid).remove();
     // parentid.parentNode.removeChild(parentid);
 
@@ -555,12 +573,16 @@ function removecolumn(e, liid) {
 function removetab(e, liid, tableid) {
     e.preventDefault();
     var parentid = "#" + document.getElementById(liid).parentElement.id;
-    console.log(parentid);
+    // console.log(parentid);
     var tabid = "#tableForm" + tableid;
-    console.log(tabid + "aaaaaaaaaaaaaaaaa");
+    // console.log(tabid + "aaaaaaaaaaaaaaaaa");
     $(parentid).remove();
     document.getElementById(tabid)
     $(tabid).remove();
-    // parentid.parentNode.removeChild(parentid);
 
+    // previoustab.pop()
+    // var toid = previoustab.pop()
+    // document.getElementById("table" + toid).style.display = "block";
+    // document.getElementById("tabbtn" + toid).className += " active";
+    // serverSideRendering("#table" + toid);
 }

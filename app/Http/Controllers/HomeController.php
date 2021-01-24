@@ -35,6 +35,12 @@ class HomeController extends Controller
         return view('playground');
     }
 
+    public function home()
+    {
+        // Storage::put('file.txt', 'Your name');
+        return view('home');
+    }
+
 
     public function savefile(Request $request)
     {
@@ -80,6 +86,7 @@ class HomeController extends Controller
         //  code is generated at server side
         $getCheckboxes = $this->getControllerCheckBox($request);
         $TableName = $this->getTable($request);
+        
         $folderName = $this->getfolder($request);
         $allcolumns = $this->getColumns($request); 
 
@@ -92,7 +99,7 @@ class HomeController extends Controller
         list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
 
         $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
-
+        Storage::deleteDirectory('username/code');
         $name ="username/res.zip";
         return "File are ready to download";
         // Storage::put('second.txt', $data);

@@ -35,10 +35,10 @@
             <p style="font-size: 14px; margin-top: 0px;">Write table name and columns in the text field.</p>
         </div>
 
-        <div class="tab ">
+        <div class="tab " style="display: none;">
             <div  class="tab_wrap">
                 <div id="tabdivid0">
-                    <button id="tabbtn0"  class="tablelinks active" onclick="opentable(event, 'table0')" style="font-size: 13px;  ">Table0</button><button id="removetab0" onclick="removetab(event, this.id,0)">x</button>
+                    <button id="tabbtn0"  class="tablelinks active" onclick="opentable(event, 'table0',0)" style="font-size: 13px;  ">Table0</button><button id="removetab0" onclick="removetab(event, this.id,0)">x</button>
                 </div>
                 
             </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="table_wrap">
             <div class="tablecontent" id="table0">
-                <form id ="tableForm0" action="makecontroller" method="GET">
+                <form id ="tableForm0" action="" method="GET">
                     @csrf
                     <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
                     <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -59,10 +59,10 @@
             
                     <br>
                     
-                    <section id="section0" class="drag-sort-enable">
+                    <section id="section0" class="drag-sort-enable" >
                         <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
-                            <li class="list-item dragdots" id="gggg0"  >
-                                <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id)" id="tablename0" name="tablename" oninput="myFunction()">
+                            <li class="" id="gggg0"  >
+                                <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,0)" id="tablename0" name="tablename" oninput="myFunction()">
                                 <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()">
                             </li>
                             <!-- <button class="add_field_button">Add col</button> -->
@@ -73,7 +73,7 @@
                                 <input type="checkbox" id="r0" name="checkbioxrequired[0]" onclick="myFunction()">
                                 <label for="r0">required</label>
                             </li> --}}
-                            <p id="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
+                            <p id="pn" class="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
                         </ul>
                     </section>
                 </form>
@@ -208,4 +208,5 @@
 </pre> -->
 
     </div>
+    <p id="pn" class="pn"></p>
 @endsection
