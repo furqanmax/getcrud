@@ -27,10 +27,12 @@ trait laravelTrait {
     }
 
     public function makeForm($tablename, $columnname) {
+        $countryscript="";
 
-        list($validate, $createcolumns, $editcolumns) = $this->formmakeColumns($tablename, $columnname);
+        list($validate, $createcolumns, $editcolumns, $countryscript) = $this->formmakeColumns($tablename, $columnname, $countryscript);
 
         $createcolumnscode = $this->createform($tablename, $createcolumns);
+        $createcolumnscode = $createcolumnscode.$countryscript;
 
         $editcolumnscode = $this->editform($tablename, $editcolumns);
 
@@ -73,8 +75,8 @@ trait laravelTrait {
     public function makeController($tablename, $foldername, $columnname) {
         
         $controller_code = "";
-
-        list($validate, $request, $destroyFileCode) = $this->makeColumns($tablename, $columnname);
+        $getcountry = "";
+        list($validate, $request, $destroyFileCode, $getcountry) = $this->makeColumns($tablename, $columnname, $getcountry);
 
         $code = $this->indexcode($tablename, $foldername, $columnname);
         $code .= $this->createcode($tablename, $foldername, $columnname);
@@ -84,14 +86,14 @@ trait laravelTrait {
         $code .= $this->updatecode($tablename, $foldername, $validate, $request);
         $code .= $this->destroycode($tablename, $destroyFileCode);
 
-        $controller_code .= $code;
+        $controller_code .= $code.$getcountry;
 
-        return $controller_code;
+        return [$controller_code, $getcountry];
     }
 
-    public function startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode){
+    public function startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode, $getcountry){
         // $code = $this->makeDirectories($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
-        $code = $this->writeController($TableName, $folderName, $controllerCode);
+        $code = $this->writeController($TableName, $folderName, $controllerCode, $getcountry);
         $code .= $this->writeTable($TableName, $folderName, $tableCode);
         $code .= $this->writecreate($TableName, $folderName, $createFormCode);
         $code .= $this->writeEdit($TableName, $folderName, $editFormCode);

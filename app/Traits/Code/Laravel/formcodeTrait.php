@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
  
 trait formcodeTrait {
 
-    public function formmakeColumns($tablename, $columnname)
+    public function formmakeColumns($tablename, $columnname, $countryscript)
     {
  
         $validate = "";
@@ -16,11 +16,13 @@ trait formcodeTrait {
 
         foreach ($columnname as $key => $value) {
 
-            list($validate, $createcolumns,$editcolumns ) = $this->checkformColumnValidation($table, $value, $validate, $createcolumns, $editcolumns);
+            list($validate, $createcolumns,$editcolumns, $countryscript ) = $this->checkformColumnValidation($table, $value, $validate, $createcolumns, $editcolumns, $countryscript);
             
         }
 
-        return [$validate, $createcolumns, $editcolumns];
+       $createcolumns = $createcolumns;
+
+        return [$validate, $createcolumns, $editcolumns, $countryscript];
     }
 
 
@@ -34,7 +36,7 @@ trait formcodeTrait {
      * @param array $value
      * @return Response
      */
-    public function checkformColumnValidation($table, $value, $validate, $createcolumns, $editcolumns){
+    public function checkformColumnValidation($table, $value, $validate, $createcolumns, $editcolumns, $countryscript){
         
         $column = $value['column'];
         $lowersingular = Str::lower(Str::singular($table));
@@ -57,7 +59,7 @@ EOD;
 
             $getvalue = $lowersingular."->".$column;
 
-            if($column == "date"){
+            if(Str::contains($column ,"date")){
 
                 $createcolumns .= <<<EOD
                             
@@ -75,6 +77,90 @@ EOD;
                         </div>
 EOD;
 
+            } 
+            if($column == "country"|| $column == "countries"){
+                $uppersingular = Str::ucfirst(Str::singular($table));
+                $createcolumns .= <<<EOD
+                        
+                     <div class="row">
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="exampleSelect" class="">$column</label>
+                             <select name="$column" id="$column" class="form-control select">
+                                 <option>Select $column</option>
+                               @foreach(@App\\$uppersingular::all() as \$row)
+                               <option value="{{\$row->id}}"> {{\$row->name}} ({{\$row->code}})</option>
+                               @endforeach
+                             </select>
+                           </div>
+                         
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="exampleSelect" class="">Province</label>
+                             <select name="province" id="province" class="form-control select">
+                                 <option>Select Province</option>
+                               
+                             </select>
+                           </div>
+                         
+                     </div>
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="exampleSelect" class="">City</label>
+                             <select name="city" id="city" class="form-control select">
+                                 <option>Select City</option>
+                               
+                             </select>
+                           </div>
+                         
+                     </div>
+                     <div class="col-md-6">
+                         <div class="position-relative form-group">
+                             <label for="" class="">Postal Code</label>
+                             <input name="postal_code" id="postal_code" placeholder="Enter Postal Code" type="text"  class="form-control" value="{{old('postal_code')}}">
+                         </div>
+                     </div>
+                     
+                 </div>
+                     
+EOD;
+$countryscript = <<<EOD
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+        <script>
+                $(document).ready( function () { 
+                    $('.select').select2();
+                    $("#country").change(function(){
+                    var id= $("#country").val();
+                    $.get("{{url('/').'/states/'}}"+id, function(data, status){
+                        console.log(data);
+                        $('#province').empty();
+                        $.each(data,function(index,value){
+                        var newOption = new Option(value.name, value.id, false, false);
+                            $('#province').append(newOption);
+                        
+                        })
+
+                    });
+            
+                    });
+                    $("#province").change(function(){
+                    var id= $("#province").val();
+                    $.get("{{url('/').'/cities/'}}"+id, function(data, status){
+                        console.log(data);
+                        $('#city').empty();
+                        $.each(data,function(index,value){
+                        var newOption = new Option(value.name, value.id, false, false);
+                            $('#city').append(newOption);
+                        })
+                    });
+                    });
+                });
+        </script>
+EOD;
+//                 $editcolumns .= <<<EOD
+
+// EOD;
             }else{
 
             $createcolumns .= <<<EOD
@@ -97,7 +183,7 @@ EOD;
             }
         }
 
-        return [$validate, $createcolumns, $editcolumns];
+        return [$validate, $createcolumns, $editcolumns, $countryscript];
         
     }
 

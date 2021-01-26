@@ -82,7 +82,7 @@ class HomeController extends Controller
     public function writAndDownloadZip(Request $request)
     {
         $index = "";
-
+        
         //  code is generated at server side
         $getCheckboxes = $this->getControllerCheckBox($request);
         $TableName = $this->getTable($request);
@@ -90,7 +90,7 @@ class HomeController extends Controller
         $folderName = $this->getfolder($request);
         $allcolumns = $this->getColumns($request); 
 
-        $controllerCode = $this->makeController($TableName, $folderName, $allcolumns); 
+        list($controllerCode, $getcountry) = $this->makeController($TableName, $folderName, $allcolumns); 
 
         $tableCode = $this->makeTable($TableName, $folderName, $allcolumns);
 
@@ -98,7 +98,7 @@ class HomeController extends Controller
         
         list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
 
-        $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
+        $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode, $getcountry);
         Storage::deleteDirectory('username/code');
         $name ="username/res.zip";
         return "File are ready to download";
@@ -121,7 +121,7 @@ class HomeController extends Controller
         $folderName = $this->getfolder($request);
         $allcolumns = $this->getColumns($request); 
 
-        $controllerCode = $this->makeController($TableName, $folderName, $allcolumns); 
+        list($controllerCode, $getcountry) = $this->makeController($TableName, $folderName, $allcolumns); 
 
         $tableCode = $this->makeTable($TableName, $folderName, $allcolumns);
 
@@ -129,42 +129,6 @@ class HomeController extends Controller
         
         list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
 
-        // print_r($APIResourcecode);
-
-        // foreach($allcolumns as $value){
-        //     $index .= '$' . $value . '->' . $value . ' = $request->' . $value . ';<br>';
-        // }
-        // $index = "";
-        // foreach ($request->mytext as $key => $value) {
-        
-        //     // ProductStock::create($value);
-        //     // Storage::put('second.txt', $value);
-
-            
-
-        //     foreach($value as $v){
-
-        //         $index .= '
-
-        //                 $' . $v . '->' . $v . ' = $request->' . $v . ';<br>';
-                
-        //     }
-
-
-            // $data =  $value; 
-            
-        // }
-
-
-        // Storage::append('second.txt', $controllerCode);
-        // return response($controllerCode);
-        
-        // $abc = $this->startwrite($TableName, $folderName, $controllerCode, $tableCode, $APIcontrollercode, $APIResourcecode, $createFormCode, $editFormCode);
-        // print_r($abc);
-        // $abc = response()->download(storage_path($abc));
-        // print_r($abc);
-        // $abc = storage_path($abc);
-        // $abc = Storage::download($abc);
         
         $filename = "download";
         

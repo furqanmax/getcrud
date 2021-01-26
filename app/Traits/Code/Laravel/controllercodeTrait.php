@@ -12,7 +12,7 @@ trait controllercodeTrait {
      * @return void
      */
 
-    public function makeColumns($tablename, $columnname)
+    public function makeColumns($tablename, $columnname, $getcountry)
     {
  
         $validate = "";
@@ -22,11 +22,13 @@ trait controllercodeTrait {
 
         foreach ($columnname as $key => $value) {
 
-            list($validate, $request, $destroyFileCode) = $this->checkColumnValidation($table, $value, $validate, $request, $destroyFileCode);
+            list($validate, $request, $destroyFileCode, $getcountry) = $this->checkColumnValidation($table, $value, $validate, $request, $destroyFileCode, $getcountry);
             
         }
 
-        return [$validate, $request, $destroyFileCode];
+        
+
+        return [$validate, $request, $destroyFileCode, $getcountry];
     }
 
 
@@ -39,7 +41,7 @@ trait controllercodeTrait {
      * @param array $value
      * @return Response
      */
-    public function checkColumnValidation($table, $value, $validate, $request, $destroyFileCode){
+    public function checkColumnValidation($table, $value, $validate, $request, $destroyFileCode, $getcountry){
         
         
         if(isset($value['required'])){
@@ -54,9 +56,25 @@ trait controllercodeTrait {
         }else{
             $request .= "
                 $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
+
+                if ($value['column'] == "country"|| $value['column'] == "countries"){
+
+                    $getcountry = <<<EOD
+
+                    public function getStates(\$id){
+                        \$states=State::where('country_id',\$id)->get();
+                        return \$states;
+                    }
+                    public function getCity(\$id){
+                        \$states=City::where('state_id',\$id)->get();
+                        return \$states;
+                    }
+                                 
+EOD;
+                }
         }
 
-        return [$validate, $request, $destroyFileCode];
+        return [$validate, $request, $destroyFileCode, $getcountry];
         
     }
 

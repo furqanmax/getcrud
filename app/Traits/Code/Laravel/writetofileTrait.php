@@ -33,10 +33,16 @@ trait writetofileTrait {
         return($response); 
     }
 
-    public function writeController($TableName, $folderName, $controllerCode){
+    public function writeController($TableName, $folderName, $controllerCode, $getcountry){
         $table = Str::ucfirst(Str::singular($TableName));
-
+        $usecitystate = "";
         $tableController = $table."Controller";
+        if($getcountry!=""){
+            $usecitystate = <<<EOD
+            use App\State;
+            use App\City;
+EOD;
+        }
         $code = <<<EOD
 <?php
 
@@ -44,7 +50,7 @@ namespace App\Http\Controllers;
 
 use App\\$table;
 use Illuminate\Http\Request;
-
+$usecitystate
 class $tableController extends Controller
 {
 
@@ -69,6 +75,7 @@ EOD;
     public function writeTable($TableName, $folderName, $tableCode){
         
         $table = Str::ucfirst(Str::singular($TableName));
+        $tables = Str::lower(Str::plural($TableName));
 
         $code = <<<EOD
 @extends('layouts.app')
@@ -79,7 +86,7 @@ EOD;
 @endsection
 EOD;
         $path = ('username/code/resources/views/');
-        $filepath = $path.$table;
+        $filepath = $path.$tables;
         $file = $filepath.'/index.blade.php';
 
         // Storage::makeDirectory($filepath, 0777, true, true);
@@ -94,6 +101,7 @@ EOD;
 
     public function writecreate($TableName, $folderName, $createFormCode){
         $table = Str::ucfirst(Str::singular($TableName));
+        $tables = Str::lower(Str::plural($TableName));
 
         $code = <<<EOD
 @extends('layouts.app')
@@ -104,7 +112,7 @@ EOD;
 @endsection
 EOD;
         $path = ('username/code/resources/views/');
-        $filepath = $path.$table;
+        $filepath = $path.$tables;
         $file = $filepath.'/create.blade.php';
 
         $response = Storage::put($file, $code);
@@ -115,6 +123,7 @@ EOD;
     public function writeEdit($TableName, $folderName, $editFormCode){
 
         $table = Str::ucfirst(Str::singular($TableName));
+        $tables = Str::lower(Str::plural($TableName));
 
         $code = <<<EOD
 @extends('layouts.app')
@@ -126,7 +135,7 @@ EOD;
 EOD;
 
         $path = ('username/code/resources/views/');
-        $filepath = $path.$table;
+        $filepath = $path.$tables;
         $file = $filepath.'/edit.blade.php';
 
         $response = Storage::put($file, $code);
