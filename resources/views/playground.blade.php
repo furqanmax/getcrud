@@ -114,7 +114,7 @@
             <button class="tablinks"  onclick="openCode(event, 'API Resource')">API Resource & Controller</button>
             <button class="tablinks"  onclick="openCode(event, 'Table')">Table</button>
             <button class="tablinks"  onclick="openCode(event, 'Form')">Form</button>
-            <button class="tablinks"  onclick="openCode(event, 'SQL query')">SQL query</button>
+            <button class="tablinks"  onclick="openCode(event, 'SQL query')">Routes</button>
 
 
         </div>
@@ -210,7 +210,8 @@
 
         <div id="SQL query" class="tabcontent">
             <h3>Routes</h3>
-            <p>Routes code. paste this code in routes/web.php</p>
+            <p>Routes comming soon</p>
+            {{-- <p>Routes code. paste this code in routes/web.php</p> --}}
         </div>
 
 
