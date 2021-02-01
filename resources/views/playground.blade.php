@@ -23,19 +23,39 @@
 
 
 
-    <div id="allfields" style="width: 45%; float: left;">
-        <button class="tablinks" onclick="clientSideRendering()">client Side Rendering</button>
-        <button class="tablinks" onclick="serverSideRendering()">server Side Rendering</button>
-        <button class="tablinks" onclick="writeanddownloadzip()">generate and download zip</button>
+    <div id="allfields" style="width: 45%; float: left;background:#fff;padding:25px;">
+        {{-- <button class="tablinks btn-primary" onclick="clientSideRendering()">Client Side Rendering</button>
+        <button class="tablinks btn-primary" onclick="serverSideRendering()">Server Side Rendering</button> --}}
+        
         <p id="zpiresponce"></p>
-        <a href=""  id="Download_zip">Download zip</a>
-        <div>
-            <h1 id="titles" style="margin-bottom: 0px;">CRUD maker</h1>
+        {{-- <a href=""  id="Download_zip">Download zip</a> --}}
+        
+        <div class="alert alert-warning" id="gettingstated" style="background-color:#013BF7;  color:white; display:block;">
+            <h1 id="titles" style="margin-bottom: 0px; font-size: 48px;
+            font-weight: 400;
+            letter-spacing: -.5px;
+            line-height: 56px;">Getting started</h1>
 
-            <p style="font-size: 14px; margin-top: 0px;">Write table name and columns in the text field.</p>
+            <p style="color: white;
+            
+            font-size: 16px;
+            line-height: 1.8;
+            padding: 16px 0 24px;">Simply type table name in the text field below and press enter and then type columns in the text field and again press enter to generate code. </p>
         </div>
-
-        <div class="tab " style="display: none;">
+        {{-- <div class="alert alert-primary" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+            <hr>
+            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+          </div> --}}
+        <div id="downloadzip" style="display:none;">
+            <button class="tablinks btn-primary "  style="margin-bottom:10px" onclick="writeanddownloadzip()">Generate And Download zip</button>
+        <p class="alert alert-primary" style="color: #5f6368;
+            font-size: 14px;
+            line-height: 1.5; margin-bottom:30px">Once all the columns are entered click on the button above to download zip file</p>
+        
+        </div>
+        <div class="tab " style="display:none">
             <div  class="tab_wrap">
                 <div id="tabdivid0">
                     <button id="tabbtn0"  class="tablelinks active" onclick="opentable(event, 'table0',0)" style="font-size: 13px;  ">Table0</button><button id="removetab0" onclick="removetab(event, this.id,0)">x</button>
@@ -48,22 +68,24 @@
             <div class="tablecontent" id="table0">
                 <form id ="tableForm0" action="" method="GET">
                     @csrf
-                    <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
-                    <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="createc" name="createc" onclick="fun_handle()"> <label for="createc"> create </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="storec" name="storec" onclick="fun_handle()"> <label for="storec"> store </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="showc" name="showc" onclick="fun_handle()"> <label for="showc"> show </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="editc" name="editc" onclick="fun_handle()"> <label for="editc"> edit </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="updatec" name="updatec" onclick="fun_handle()"> <label for="updatec"> update </label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" checked="true" id="deletec" name="deletec" onclick="fun_handle()"> <label for="deletec"> delete </label> &nbsp;&nbsp;&nbsp;&nbsp;
-            
+                    <div style="display: none">
+                        <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
+                        <input type="checkbox" checked="true" id="indexc" name="indexc" onclick="fun_handle()"> <label for="indexc"> Index </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="createc" name="createc" onclick="fun_handle()"> <label for="createc"> create </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="storec" name="storec" onclick="fun_handle()"> <label for="storec"> store </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="showc" name="showc" onclick="fun_handle()"> <label for="showc"> show </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="editc" name="editc" onclick="fun_handle()"> <label for="editc"> edit </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="updatec" name="updatec" onclick="fun_handle()"> <label for="updatec"> update </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" checked="true" id="deletec" name="deletec" onclick="fun_handle()"> <label for="deletec"> delete </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                     <br>
                     
                     <section id="section0" class="drag-sort-enable" >
                         <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
                             <li class="" id="gggg0"  >
+                                {{-- <label for="f0">Table name</label>&nbsp;&nbsp;&nbsp;&nbsp; --}}
                                 <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,0)" id="tablename0" name="tablename" oninput="myFunction()">
-                                <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()">
+                                {{-- <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()"> --}}
                             </li>
                             <!-- <button class="add_field_button">Add col</button> -->
                             {{-- <li class="list-item dragdots" id="hcol0"  style="display: none;">
@@ -73,8 +95,9 @@
                                 <input type="checkbox" id="r0" name="checkbioxrequired[0]" onclick="myFunction()">
                                 <label for="r0">required</label>
                             </li> --}}
-                            <p id="pn" class="pn" style="font-size: 12px; color: #969696;">Press enter to add column.</p>
+                            
                         </ul>
+                        <p id="pn0" class="pn" style="font-size: 16px; color: #212121;"><b>Press enter to add column.</b></p>
                     </section>
                 </form>
             </div>
@@ -82,16 +105,16 @@
 
     
     </div>
-    <div style="width: 50%; float: left; color: #444; margin-left: 20px;">
+    <div style="width: 50%; float: left; color: #444; margin-left: 20px;" >
 
 
 
         <div class="tab">
-            <button class="tablinks active" onclick="openCode(event, 'Controller')">Controller</button>
-            <button class="tablinks" onclick="openCode(event, 'API Resource')">API Resource & Controller</button>
-            <button class="tablinks" onclick="openCode(event, 'Table')">Table</button>
-            <button class="tablinks" onclick="openCode(event, 'Form')">Form</button>
-            <button class="tablinks" onclick="openCode(event, 'SQL query')">SQL query</button>
+            <button class="tablinks active" style="" onclick="openCode(event, 'Controller')">Controller</button>
+            <button class="tablinks"  onclick="openCode(event, 'API Resource')">API Resource & Controller</button>
+            <button class="tablinks"  onclick="openCode(event, 'Table')">Table</button>
+            <button class="tablinks"  onclick="openCode(event, 'Form')">Form</button>
+            <button class="tablinks"  onclick="openCode(event, 'SQL query')">SQL query</button>
 
 
         </div>
@@ -186,8 +209,8 @@
 
 
         <div id="SQL query" class="tabcontent">
-            <h3>SQL query</h3>
-            <p>Comming soon...</p>
+            <h3>Routes</h3>
+            <p>Routes code. paste this code in routes/web.php</p>
         </div>
 
 
