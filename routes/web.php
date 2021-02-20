@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/visitormakecontrollerserver', 'VisitorController@makecontrollerserver');
+
+Route::get('/playground', function () {
+    return view('visitorsplayground');
 });
 
 Auth::routes();
