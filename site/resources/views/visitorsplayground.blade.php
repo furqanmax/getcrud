@@ -39,7 +39,8 @@
             <p style="
             font-size: 16px;
             line-height: 1.8;
-            padding: 16px 0 24px;">Makes laravel CRUD operatins effertless </p>
+            padding: 16px 0 24px;">Makes laravel CRUD operatins effertless. <br> Start with inserting table name and press enter to see magic. </p>
+            
         </div>
         {{-- <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">Well done!</h4>
@@ -98,7 +99,7 @@
 
     
     </div>
-    <div style="width: 50%; float: left; color: #444; margin-left: 20px;padding-top:25px;" >
+    <div style="width: 50%; float: left; color: #959595; margin-left: 20px;padding-top:25px;" >
 
 
 
@@ -112,8 +113,9 @@
 
         </div>
 
-        <div id="Controller" style="display: block;" class="tabcontent">
-            <p>Controller code</p> 
+        <div id="Controller" style="display: block;" class="tabcontent p-0">
+            <h4 style="margin:0px; " class="pt-4">Controller code</h4>
+            <p style="">Controller code contains all finctions index, create, store, edit, update and destroy.</p> 
             <button class="copy" onclick="copyCode('p1')">Copy</button>
             <pre style="border: none;" id="p1">
                 <code style="display: none;" id="phpcode" class="php">
@@ -132,8 +134,11 @@
         </div>
 
         <div id="API Resource" class="tabcontent">
-            <p style="margin:0px">API Resource code</p>
-            <p style="font-size: 12px;">copy and paste this code in app/http/Resource/ in resource file</p>
+            <div class="alert alert-dark" role="alert">
+                Scrole down for API Controller Code
+            </div>
+            <p style="margin:0px" class="pt-4">API Resource code</p>
+            <p style="">copy and paste this code in app/http/Resource/ in resource file</p>
             <button class="copy" onclick="copyCode('p3')">Copy</button>
 
             <pre>
@@ -143,8 +148,8 @@
             <pre style="display: none;" id="p3">
                 <code class="php" id="apiResource"></code>
             </pre>
-            <p style="margin:0px">API Controller code</p>
-            <p style="font-size: 12px;">copy and paste this code in app/http/controller/api/ in controller file</p>
+            <p style="margin:0px" >API Controller code</p>
+            <p style="">copy and paste this code in app/http/controller/api/ in controller file</p>
             <button class="copy" onclick="copyCode('p4')">Copy</button>
 
             <pre>
@@ -163,7 +168,8 @@
         </div>
 
         <div id="Table" class="tabcontent">
-            <p>Index table code</p>
+            <h4 style="margin:0px" class="pt-4">Table code</h4>
+            <p>shows all entries in database with edit and delete button</p>
             <button class="copy" onclick="copyCode('p2')">Copy</button>
 
             <pre>
@@ -176,6 +182,9 @@
         </div>
 
         <div id="Form" class="tabcontent">
+            <div class="alert alert-dark" role="alert">
+               Scrole down for Edit form code
+            </div>
             <h3>form</h3>
             <p>Create form code</p>
             <pre>
@@ -193,7 +202,7 @@
 
         <!-- <div id="API Resource" class="tabcontent">
   <p style="margin:0px">API Resource code</p>
-  <p style="font-size: 12px;">copy and paste this code in app/http/Resource/ in resource file</p>
+  <p style="">copy and paste this code in app/http/Resource/ in resource file</p>
   <button class="copy"  onclick="copyCode('p3')">Copy</button>
   <pre id="p3">
       <code id="apiResource"></code>

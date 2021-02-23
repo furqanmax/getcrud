@@ -20,7 +20,6 @@ trait APIcodeTrait {
             \$url=URL::to('/');
             return [
                 'id' =>\$this->id,
-
                     $apiResourceCode
                    
             ];
@@ -73,7 +72,7 @@ EOD;
         
         if(isset($value['required'])){
             $validate .= "
-            '" . $value['column'] . "'=>'required',";
+                '" . $value['column'] . "'=>'required',";
         }
         
         
@@ -83,7 +82,7 @@ EOD;
             $apiResourceCode .= $apiResourcefileCode;
         }else{
             $request .= "
-                $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
+            $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
             
             $apiResourceCode .= "
                 '". $value['column'] ."' => \$this->". $value['column'] .",";
@@ -108,25 +107,28 @@ EOD;
 
         $Filecode=<<<EOD
 
-        if(\$request->file('$column')) {
-            \$upload = \$request->file('$column');
-            \$fileformat = time().\$upload->getClientOriginalName();
-            if (\$upload->move('uploads/$table/', \$fileformat)) {
-                $$table->$column = \$fileformat;
+
+            if(\$request->file('$column')) {
+                \$upload = \$request->file('$column');
+                \$fileformat = time().\$upload->getClientOriginalName();
+                if (\$upload->move('uploads/$table/', \$fileformat)) {
+                    $$table->$column = \$fileformat;
+                }
             }
-        }
 
 EOD;
 
         $destroyFileCode = <<<EOD
-        if($$table->$column !=="no-image.png"){
-            unlink('uploads/$table/'.$$table->$column );
-        }
+
+
+            if($$table->$column !=="no-image.png"){
+                unlink('uploads/$table/'.$$table->$column );
+            }
 EOD;
 
         $apiResourcefileCode = <<<EOD
 
-        '$column' => \$url."/uploads/$table/".\$this->$column,
+                '$column' => \$url."/uploads/$table/".\$this->$column,
 EOD;
     
         return [$Filecode, $destroyFileCode, $apiResourcefileCode];
@@ -148,9 +150,7 @@ EOD;
 
         public function index()
         {
-
             return  ". Str::ucfirst(Str::singular($tablename)) ."Resource::collection( ". Str::ucfirst(Str::singular($tablename)) . "::all());
-
         }";
         
         return $code;
@@ -180,26 +180,19 @@ EOD;
         public function store(Request \$request)
         {
             \$this->validate([
-               
                 $validate
-
             ]);
             $$lowerplural = new $ucfirstsingular();
-            
             $request
 
             if($$lowerplural ->save()){
-                return response()->json([ 
-                        
+                return response()->json([  
                     'status'=>'S',
-                        
                 ]);
             }
             else{
                 return response()->json([ 
-            
                     'status'=>'F',            
-                        
                 ]);
             }
 
@@ -237,8 +230,7 @@ EOD;
                 $validate
           ]);
         
-          $$lowerplural=$ucfirstsingular::findOrFail(\$id);
-               
+          $$lowerplural=$ucfirstsingular::findOrFail(\$id);  
             $request
         
           if(\$item->update()){

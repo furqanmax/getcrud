@@ -55,7 +55,7 @@ trait controllercodeTrait {
             $request .= $Filecode;
         }else{
             $request .= "
-                $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
+            $" . Str::lower(Str::plural($table)) . "->" . $value['column'] . ' = $request->' . $value['column'] . ";";
 
                 if ($value['column'] == "country"|| $value['column'] == "countries"){
 
@@ -93,20 +93,23 @@ EOD;
 
         $Filecode=<<<EOD
 
-        if(\$request->file('$column')) {
-            \$upload = \$request->file('$column');
-            \$fileformat = time().\$upload->getClientOriginalName();
-            if (\$upload->move('uploads/$table/', \$fileformat)) {
-                $$table->$column = \$fileformat;
+
+            if(\$request->file('$column')) {
+                \$upload = \$request->file('$column');
+                \$fileformat = time().\$upload->getClientOriginalName();
+                if (\$upload->move('uploads/$table/', \$fileformat)) {
+                    $$table->$column = \$fileformat;
+                }
             }
-        }
 
 EOD;
 
         $destroyFileCode = <<<EOD
-        if($$table->$column !=="no-image.png"){
-            unlink('uploads/$table/'.$$table->$column );
-        }
+
+        
+            if($$table->$column !=="no-image.png"){
+                unlink('uploads/$table/'.$$table->$column );
+            }
 EOD;
     
         return [$Filecode, $destroyFileCode];
@@ -125,12 +128,17 @@ EOD;
 
         $code = "
 
+        /** 
+         * Display a listing of the resource. 
+         * @return \Illuminate\Http\Response 
+         */  
         public function index()
         {
           $" . Str::lower(Str::plural($tablename)) . " = " . Str::ucfirst(Str::singular($tablename)) . "::orderBy('updated_at','desc')->get();
           
           return view('". $foldername . Str::lower(Str::plural($tablename)) . ".index',compact('" . Str::lower(Str::plural($tablename)) . "')); 
-        }";
+        }
+        ";
         
         return $code;
     }
@@ -148,6 +156,10 @@ EOD;
 
         $code = "
 
+        /** 
+        * Show the form for creating a new resource. 
+        * @return \Illuminate\Http\Response  
+        */  
         public function create()
         {
           return view('" . $foldername . Str::lower(Str::plural($tablename)) . ".create');
@@ -175,7 +187,14 @@ EOD;
 
         $code=<<<EOD
         
-        
+
+
+        /** 
+         * Store a newly created resource in storage. 
+         * 
+         * @param  \Illuminate\Http\Request   \$request 
+         * @return \Illuminate\Http\Response 
+         */  
         public function store(Request \$request)
         {
            \$this->validate(\$request,
@@ -214,6 +233,12 @@ EOD;
         $code = <<<EOD
 
 
+
+        /** 
+         * Display the specified resource. 
+         * @param  int  \$id 
+         * @return \Illuminate\Http\Response 
+         */  
         public function show(\$id)
         {
           $$lowerplural = $ucfirstsingular::findOrFail(\$id);
@@ -240,6 +265,12 @@ EOD;
         $code = <<<EOD
 
 
+
+        /** 
+         * Show the form for editing the specified resource. 
+         * @param  int  \$id 
+         * @return  \Illuminate\Http\Response 
+         */  
         public function edit(\$id)
         {
             $$lowerplural = $ucfirstsingular::findOrFail(\$id);
@@ -269,7 +300,14 @@ EOD;
 
         $code = <<<EOD
         
-        
+
+
+        /** 
+         * Update the specified resource in storage. 
+         * @param  \Illuminate\Http\Request   \$request 
+         * @param  int  \$id 
+         * @return \Illuminate\Http\Response 
+         */  
         public function update(Request \$request, \$id)
         {
             \$this->validate(\$request,[ 
@@ -309,7 +347,13 @@ EOD;
 
         $code = <<<EOD
         
-        
+
+
+        /** 
+         * Remove the specified resource from storage. 
+         * @param  int  \$id 
+         * @return  \Illuminate\Http\Response 
+         */  
         public function destroy(\$id)
         {
             $$lowerplural = $ucfirstsingular::findOrFail(\$id);
