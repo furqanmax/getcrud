@@ -261,7 +261,7 @@ function handle(e, id, num) {
                         
                             
                                 <input type="checkbox" id="f` + x + `" name="checkboxfile[` + x + `]" onclick="myFunction()">
-                                <label for="f` + x + `">file</label>
+                                <label for="f` + x + `" >file</label>
                              &nbsp&nbsp&nbsp&nbsp 
 
                              

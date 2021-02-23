@@ -39,7 +39,7 @@
             <p style="
             font-size: 16px;
             line-height: 1.8;
-            padding: 16px 0 24px;">Simply type table name in the text field below and press enter and then type columns in the text field and again press enter to generate code. </p>
+            padding: 16px 0 24px;">Makes laravel CRUD operatins effertless </p>
         </div>
         {{-- <div class="alert alert-primary" role="alert">
             <h4 class="alert-heading">Well done!</h4>
@@ -90,7 +90,7 @@
                             </li> --}}
                             
                         </ul>
-                        <p id="pn0" class="pn" style="font-size: 16px; color: #212121;"><b>Press enter to add column.</b></p>
+                        <p id="pn0" class="pn" style="font-size: 12px; color: #212121;">Press enter </p>
                     </section>
                 </form>
             </div>
@@ -113,7 +113,7 @@
         </div>
 
         <div id="Controller" style="display: block;" class="tabcontent">
-            <!-- <p>Controller code</p> -->
+            <p>Controller code</p> 
             <button class="copy" onclick="copyCode('p1')">Copy</button>
             <pre style="border: none;" id="p1">
                 <code style="display: none;" id="phpcode" class="php">
