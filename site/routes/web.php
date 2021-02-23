@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('/visitormakecontrollerserver', 'VisitorController@makecontrollerserver');
 
-Route::get('/playground', function () {
+Route::get('/', function () {
     return view('visitorsplayground');
 });
 
