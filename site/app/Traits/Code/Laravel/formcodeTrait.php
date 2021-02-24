@@ -51,9 +51,18 @@ trait formcodeTrait {
             $createcolumns .= <<<EOD
                         
                         <div class="position-relative form-group">
-                            <label for="exampleFile" class="">$column</label>
+                            <label for="$column" class="">$column</label>
                             <input name="$column" id="id_$column" type="file" class="form-control-file">
                         </div>         
+EOD;
+
+            $getvalue = $lowersingular."->".$column;
+            $editcolumns .= <<<EOD
+                            
+                        <div class="position-relative form-group">
+                            <label for="$column" class="">$column</label>
+                            <input name="$column" id="id_$column" type="file" placeholder="$column"  class="form-control-file" value="{{$getvalue}}">
+                        </div>
 EOD;
         }else{
 
@@ -64,7 +73,7 @@ EOD;
                 $createcolumns .= <<<EOD
                             
                         <div class="position-relative form-group">
-                            <label for="" class="">$column</label>
+                            <label for="$column" class="">$column</label>
                             <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{}}">
                         </div>
 EOD;
@@ -72,7 +81,7 @@ EOD;
                 $editcolumns .= <<<EOD
                             
                         <div class="position-relative form-group">
-                            <label for="" class="">$column</label>
+                            <label for="$column" class="">$column</label>
                             <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{$getvalue}}">
                         </div>
 EOD;

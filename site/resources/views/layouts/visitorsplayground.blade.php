@@ -40,5 +40,10 @@
             @yield('content')
         </main>
     </div>
+    
+
+    <footer style="padding-top: 200px; ">
+        <p>hello</p>
+    </footer>
 </body>
 </html>
