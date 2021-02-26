@@ -45,6 +45,7 @@ trait tablecodeTrait {
 
 
         $code = <<<EOD
+        
         <div class="box-header">
           <div class="row mt-3">
               <div class="col-md-6">

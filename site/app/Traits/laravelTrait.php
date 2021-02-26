@@ -35,6 +35,7 @@ trait laravelTrait {
         $createcolumnscode = $createcolumnscode.$countryscript;
 
         $editcolumnscode = $this->editform($tablename, $editcolumns);
+        $editcolumnscode = $editcolumnscode.$countryscript;
 
         return[$createcolumnscode, $editcolumnscode];
         

@@ -42,10 +42,10 @@ label {
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 8px 16px;
     transition: 0.3s;
     font-size: 12px;
-    color: #013BF7;
+    /* color: #013BF7; */
     float: right;
 }
 
@@ -253,4 +253,27 @@ input[type=checkbox]:checked+.label:hover {
     color: #022fc5;
     /* background-color: #bdccff; */
     /* background-image: url("checked.png"); */
+}
+
+.content {
+    position: relative;
+}
+
+.right-panel-link {
+    position: absolute;
+    line-height: 12px;
+    /* width: 18px; */
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    /* position: inherit; */
+    top: 0;
+    right: 0;
+    /* z-index: 1; */
+    color: white;
+}
+
+.right-panel-link:hover {
+    color: rgb(219, 219, 219);
 }

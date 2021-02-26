@@ -32,15 +32,13 @@
             {{-- <a href=""  id="Download_zip">Download zip</a> --}}
             
             <div class="" id="gettingstated" style="">
-                <h1 id="titles" style="margin-bottom: 0px; font-size: 48px;
-                font-weight: 400;
-                letter-spacing: -.5px;
-                line-height: 56px;"> <b> Get CRUD</b></h1>
+                <h3 id="titles" style="font-weight: 400;margin-bottom: 0px; font-size: 54px;"> <b> Get CRUD</b></h3>
     
                 <p style="
                 font-size: 14px;
-                line-height: 1.8;
-                padding: 16px 0 24px;">Makes laravel CRUD operations effertless. <br> <b>Start with inserting table name and press enter to see magic.</b>  </p>
+                padding-top:0px;
+                font-weight:300;
+                padding-bottom:8px;">Makes laravel CRUD operations effortless.  </p>
                 
             </div>
             {{-- <div class="alert alert-primary" role="alert">
@@ -73,9 +71,12 @@
                             <input type="checkbox" checked="true" id="updatec" name="updatec" onclick="fun_handle()"> <label for="updatec"> update </label> &nbsp;&nbsp;&nbsp;&nbsp;
                             <input type="checkbox" checked="true" id="deletec" name="deletec" onclick="fun_handle()"> <label for="deletec"> delete </label> &nbsp;&nbsp;&nbsp;&nbsp;
                         </div>
-                        <br>
+                        
                         
                         <section id="section0" class="drag-sort-enable" >
+
+                            <h5 id="inserttab" style="font-size:18px; font-weight:500; padding-bottom: 8px;"> Insert the table name, hit enter to be amazed.</h5>
+                            
                             <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
                                 <li class="" id="gggg0"  >
                                     {{-- <label for="f0">Table name</label>&nbsp;&nbsp;&nbsp;&nbsp; --}}
@@ -92,15 +93,28 @@
                                 </li> --}}
                                 
                             </ul>
-                            <p id="pn0" class="pn" style="font-size: 12px; color: #212121;">Press enter </p>
+                            <p id="pn0" class="pn" style="font-size: 12px; color: #212121;">
+                                Press enter
+                                <svg  viewBox="0 0 512 512" width="12" height="12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="Solid">
+                                    <path d="m400 24a24 24 0 0 0 -24 24v272a32 32 0 0 1 -32 32h-174.059l47.03-47.029a24 24 0 0 0 -33.942-33.942l-88 88a24 24 0 0 0 0 33.942l88 88a24 24 0 0 0 33.942-33.942l-47.03-47.029h174.059a80 80 0 0 0 80-80v-272a24 24 0 0 0 -24-24z"/>
+                                </g>
+                                </svg>
+
+                                 </p>
+
                         </section>
                     </form>
                 </div>
             </div>
     
         
+
+            
+
+
         </div>
-        <div class="col-lg-7" style=" float: left; color: #959595; " >
+        <div class="col-lg-7" id="all_code_tabs" style="display:none;  color: #959595; " >
     
     
     
@@ -109,7 +123,7 @@
                 <button class="tablinks"  onclick="openCode(event, 'API Resource')">API Resource & Controller</button>
                 <button class="tablinks"  onclick="openCode(event, 'Table')">Table</button>
                 <button class="tablinks"  onclick="openCode(event, 'Form')">Form</button>
-                <button class="tablinks"  onclick="openCode(event, 'SQL query')">Routes</button>
+                {{-- <button class="tablinks"  onclick="openCode(event, 'SQL query')">Routes</button> --}}
     
     
             </div>
@@ -117,10 +131,10 @@
             <div id="Controller" style="display: block;" class="tabcontent p-0">
                 <h4 style="margin:0px; " class="pt-4">Controller code</h4>
                 <p style="">Controller code contains all finctions index, create, store, edit, update and destroy.</p> 
-                <button class="copy" onclick="copyCode('p1')">Copy</button>
-                <pre style="border: none;" id="p1">
+                {{-- <button class="copy" onclick="copyCode('p1')">Copy</button>
+                <pre style="border: none;" class="blog-posts" id="p1">
                     <code style="display: none;" id="phpcode" class="php">
-                        <pre  id="index" ></pre>
+                        <pre id="index" ></pre>
                         <pre id="create"></pre>
                         <pre id="store"></pre>
                         <pre id="show"></pre>
@@ -128,10 +142,37 @@
                         <pre id="update"></pre>
                         <pre id="deletes"></pre>
                     </code>
-                </pre>
-                <pre>
-                    <code id="phpservercode"></code>
-                </pre>
+                </pre> --}}
+                
+                
+                    
+                       
+                   
+                        <div class="content">
+                            
+                                <div id="phpservercode_copy" class="copy right-panel-link mt-2"  onclick="copyCode('phpservercode',this.id)">
+                                    <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                            viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                                        <g>
+                                            <g>
+                                                <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                                    C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                                    c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                                <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                                    c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                                    V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                                        </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                    </i>copy
+                                </div>
+                                <div style="">
+                                    <pre>
+                                        <code style="margin-top:-20px;" class="pb-4" id="phpservercode"></code> 
+                                    </pre>
+                                </div>
+                            
+                        </div>
+                    
             </div>
     
             <div id="API Resource" class="tabcontent">
@@ -140,24 +181,69 @@
                 </div>
                 <p style="margin:0px" class="pt-4">API Resource code</p>
                 <p style="">copy and paste this code in app/http/Resource/ in resource file</p>
-                <button class="copy" onclick="copyCode('p3')">Copy</button>
-    
-                <pre>
-                    <code id="API_resource_code"> </code>
-                </pre>
-    
-                <pre style="display: none;" id="p3">
+                
+
+                <div class="content">
+                            
+                    <div id="API_resource_code_copy" class="copy right-panel-link mt-2"  onclick="copyCode('API_resource_code',this.id)">
+                        <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                        C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                        c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                    <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                        c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                        V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                        </i>copy
+                    </div>
+                    <div style="">
+                        <pre>
+                            <code style="margin-top:-20px;" class="pb-4" id="API_resource_code"></code> 
+                        </pre>
+                    </div>
+                
+                </div>
+                {{-- <pre style="display: none;" id="p3">
                     <code class="php" id="apiResource"></code>
-                </pre>
+                </pre> --}}
                 <p style="margin:0px" >API Controller code</p>
                 <p style="">copy and paste this code in app/http/controller/api/ in controller file</p>
-                <button class="copy" onclick="copyCode('p4')">Copy</button>
+                {{-- <button class="copy" onclick="copyCode('API_controller_code',this.id)">Copy</button>
     
                 <pre>
                     <code id="API_controller_code"> </code>
-                </pre>
+                </pre> --}}
+
+                <div class="content">
+                            
+                    <div id="API_controller_code_copy" class="copy right-panel-link mt-2"  onclick="copyCode('API_controller_code',this.id)">
+                        <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                        C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                        c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                    <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                        c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                        V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                        </i>copy
+                    </div>
+                    <div style="">
+                        <pre>
+                            <code style="margin-top:-20px;" class="pb-4" id="API_controller_code"></code> 
+                        </pre>
+                    </div>
+                
+                </div>
     
-                <pre style="display: none;" id="p4">
+                {{-- <pre style="display: none;" id="p4">
                     <code class="php" id="apiC">
                     <code id="apiindex"></code>
                     <code id="apistore"></code>
@@ -165,21 +251,46 @@
                     <code id="apideletes"></code>
                     </code>
                     <!-- <code id="apiController"></code> -->
-                </pre>
+                </pre> --}}
             </div>
     
             <div id="Table" class="tabcontent">
                 <h4 style="margin:0px" class="pt-4">Table code</h4>
                 <p>shows all entries in database with edit and delete button</p>
-                <button class="copy" onclick="copyCode('p2')">Copy</button>
+                {{-- <button class="copy" onclick="copyCode('table_code',this.id)">Copy</button>
     
                 <pre>
                     <code id="table_code"> </code>
-                </pre>
+                </pre> --}}
+
+                <div class="content">
+                            
+                    <div id="table_code_copy" class="copy right-panel-link mt-2"  onclick="copyCode('table_code',this.id)">
+                        <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                        C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                        c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                    <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                        c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                        V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                        </i>copy
+                    </div>
+                    <div style="">
+                        <pre>
+                            <code style="margin-top:-20px;" class="pb-4" id="table_code"></code> 
+                        </pre>
+                    </div>
+                
+                </div>
     
-                <pre style="display: none" id="p2">
+                {{-- <pre style="display: none" id="p2">
                     <code class="html" id="htmlTable"></code>
-                </pre>
+                </pre> --}}
             </div>
     
             <div id="Form" class="tabcontent">
@@ -188,25 +299,81 @@
                 </div>
                 <h3>form</h3>
                 <p>Create form code</p>
+                {{-- <button class="copy" onclick="copyCode('Create_form_code',this.id)">Copy</button>
                 <pre>
                     <code id="Create_form_code"> </code>
-                </pre>
+                </pre> --}}
     
+
+                <div class="content">
+                            
+                    <div id="Create_form_code_copy" class="copy right-panel-link mt-2"  onclick="copyCode('Create_form_code',this.id)">
+                        <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                        C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                        c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                    <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                        c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                        V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                        </i>copy
+                    </div>
+                    <div style="">
+                        <pre>
+                            <code style="margin-top:-20px;" class="pb-4" id="Create_form_code"></code> 
+                        </pre>
+                    </div>
+                
+                </div>
+
+
                 <p>Edit form code</p>
+                {{-- <button class="copy" onclick="copyCode('Edit_form_code',this.id)">Copy</button>
                 <pre>
                     <code id="Edit_form_code"> </code>
-                </pre>
+                </pre> --}}
+
+                <div class="content">
+                            
+                    <div id="Edit_form_code_copy" class="copy right-panel-link mt-2"  onclick="copyCode('Edit_form_code',this.id)">
+                        <i ><!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="18" height="18" fill="currentColor" x="0px" y="0px"
+                                viewBox="0 0 488.3 488.3" style="enable-background:new 0 0 488.3 488.3;" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path d="M314.25,85.4h-227c-21.3,0-38.6,17.3-38.6,38.6v325.7c0,21.3,17.3,38.6,38.6,38.6h227c21.3,0,38.6-17.3,38.6-38.6V124
+                                        C352.75,102.7,335.45,85.4,314.25,85.4z M325.75,449.6c0,6.4-5.2,11.6-11.6,11.6h-227c-6.4,0-11.6-5.2-11.6-11.6V124
+                                        c0-6.4,5.2-11.6,11.6-11.6h227c6.4,0,11.6,5.2,11.6,11.6V449.6z"/>
+                                    <path d="M401.05,0h-227c-21.3,0-38.6,17.3-38.6,38.6c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5c0-6.4,5.2-11.6,11.6-11.6h227
+                                        c6.4,0,11.6,5.2,11.6,11.6v325.7c0,6.4-5.2,11.6-11.6,11.6c-7.5,0-13.5,6-13.5,13.5s6,13.5,13.5,13.5c21.3,0,38.6-17.3,38.6-38.6
+                                        V38.6C439.65,17.3,422.35,0,401.05,0z"/>
+                            </g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                        </i>copy
+                    </div>
+                    <div style="">
+                        <pre>
+                            <code style="margin-top:-20px;" class="pb-4" id="Edit_form_code"></code> 
+                        </pre>
+                    </div>
+                
+                </div>
+
+
             </div>
     
     
     
     
     
-            <div id="SQL query" class="tabcontent">
+            {{-- <div id="SQL query" class="tabcontent">
                 <h3>Routes</h3>
                 <p>Routes comming soon</p>
-                {{-- <p>Routes code. paste this code in routes/web.php</p> --}}
-            </div>
+                <p>Routes code. paste this code in routes/web.php</p>
+            </div> --}}
     
     
     

@@ -15,9 +15,15 @@
     
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&amp;display=swap" rel="stylesheet"> --}}
+    {{-- <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;500;600;700;800;900&display=swap" rel="stylesheet"> --}}
+{{-- <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet"> --}}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
    
 
     <!-- Styles -->
@@ -31,6 +37,74 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/night-owl.min.css"> 
 
     {{-- <script src="{!! mix('js/test.js') !!}"></script> --}}
+   
+
+    <style>
+        body{
+            /* font-family: 'Jost', sans-serif; */
+            /* font-family: 'Montserrat', sans-serif; */
+            font-family: 'Poppins', sans-serif;
+        }
+        "@media print {
+            .code-badge { display: none; }
+        }
+        .code-badge-pre {
+            position: relative; 
+        }
+        .code-badge {
+            display: flex;
+            flex-direction: row;
+            white-space: normal;
+            background: transparent;
+            background: #333;
+            color: white;
+            font-size: 0.8em;
+            opacity: 0.5;
+            border-radius: 0 0 0 7px;
+            padding: 5px 8px 5px 8px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .code-badge.active {
+            opacity: 0.8;
+        }
+        .code-badge:hover {
+            opacity: .95;
+        }
+        .code-badge a,
+        .code-badge a:hover {
+            text-decoration: none;
+        }
+    
+        .code-badge-language {
+            margin-right: 10px;
+            font-weight: 600;
+            color: goldenrod;
+        }
+        .code-badge-copy-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 0 7px;
+            margin-top:2;
+        }
+        .fa.text-success:{ color: limegreen !important}    
+    </style>
+
+    <script>
+        const copyText = (e) => {
+    const text = document.getElementById(e).innerText;
+
+    navigator.clipboard.writeText(text).then(
+          () => {
+            console.log('Text copied successfully')
+          },
+          () => {
+            console.log('Error writing to the clipboard');
+          }
+        );
+}
+    </script>
 </head>
 <body>
     <div id="app">
@@ -42,8 +116,24 @@
     </div>
     
 
-    <footer style="padding-top: 200px; ">
-        <p>hello</p>
+    <footer style="padding-top: 400px; " class="text-center pb-4">
+        
+        Plaease share your valuable suggations.
+        <br><br>
+        Designed and developed by <br>
+        <a href="http://toaplex.com/public/">ToaPlex LLP</a>
+
+        
+        <br><br>
+         © 2021 GetCRUD | <a href="contact">Contact</a> 
+
+     
+
+
     </footer>
+
+
+    
+   
 </body>
 </html>

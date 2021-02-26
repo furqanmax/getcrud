@@ -127,7 +127,6 @@ EOD;
     public function indexcode($tablename, $foldername, $columnname){
 
         $code = "
-
         /** 
          * Display a listing of the resource. 
          * @return \Illuminate\Http\Response 
@@ -197,7 +196,7 @@ EOD;
          */  
         public function store(Request \$request)
         {
-           \$this->validate(\$request,
+           \$this->validate(\$request,[
                 $validate 
           ]);
           $$lowerplural  = new $ucfirstsingular();
@@ -243,7 +242,7 @@ EOD;
         {
           $$lowerplural = $ucfirstsingular::findOrFail(\$id);
           return view('$foldername$lowerplural.show',compact('$lowerplural'));
-        };
+        }
 EOD;
         return $code;
     }

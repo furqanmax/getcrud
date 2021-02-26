@@ -15,6 +15,7 @@ trait APIcodeTrait {
     public function APIResource($apiResourceCode)
     {
         $code = <<<EOD
+
         public function toArray(\$request)
         {
             \$url=URL::to('/');
@@ -146,8 +147,6 @@ EOD;
     public function APIindexcode($tablename, $foldername, $columnname){
 
         $code = "
-
-
         public function index()
         {
             return  ". Str::ucfirst(Str::singular($tablename)) ."Resource::collection( ". Str::ucfirst(Str::singular($tablename)) . "::all());

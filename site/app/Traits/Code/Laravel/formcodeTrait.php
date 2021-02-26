@@ -86,14 +86,13 @@ EOD;
                         </div>
 EOD;
 
-            } 
-            if($column == "country"|| $column == "countries"){
+            }elseif($column == "country"|| $column == "countries"){
                 $uppersingular = Str::ucfirst(Str::singular($table));
                 $createcolumns .= <<<EOD
                         
                      <div class="row">
                      <div class="col-md-6">
-                         <div class="position-relative form-group"><label for="exampleSelect" class="">$column</label>
+                         <div class="position-relative form-group"><label for="$column" class="">$column</label>
                              <select name="$column" id="$column" class="form-control select">
                                  <option>Select $column</option>
                                @foreach(@App\\$uppersingular::all() as \$row)
@@ -105,7 +104,7 @@ EOD;
                      </div>
                      
                      <div class="col-md-6">
-                         <div class="position-relative form-group"><label for="exampleSelect" class="">Province</label>
+                         <div class="position-relative form-group"><label for="province" class="">Province</label>
                              <select name="province" id="province" class="form-control select">
                                  <option>Select Province</option>
                                
@@ -114,7 +113,7 @@ EOD;
                          
                      </div>
                      <div class="col-md-6">
-                         <div class="position-relative form-group"><label for="exampleSelect" class="">City</label>
+                         <div class="position-relative form-group"><label for="city" class="">City</label>
                              <select name="city" id="city" class="form-control select">
                                  <option>Select City</option>
                                
@@ -124,7 +123,51 @@ EOD;
                      </div>
                      <div class="col-md-6">
                          <div class="position-relative form-group">
-                             <label for="" class="">Postal Code</label>
+                             <label for="postal_code" class="">Postal Code</label>
+                             <input name="postal_code" id="postal_code" placeholder="Enter Postal Code" type="text"  class="form-control" value="{{old('postal_code')}}">
+                         </div>
+                     </div>
+                     
+                 </div>
+                     
+EOD;
+
+                $editcolumns .= <<<EOD
+                        
+                     <div class="row">
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="$column" class="">$column</label>
+                             <select name="$column" id="$column" class="form-control select">
+                                 <option>Select $column</option>
+                               @foreach(@App\\$uppersingular::all() as \$row)
+                               <option value="{{\$row->id}}"> {{\$row->name}} ({{\$row->code}})</option>
+                               @endforeach
+                             </select>
+                           </div>
+                         
+                     </div>
+                     
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="province" class="">Province</label>
+                             <select name="province" id="province" class="form-control select">
+                                 <option>Select Province</option>
+                               
+                             </select>
+                           </div>
+                         
+                     </div>
+                     <div class="col-md-6">
+                         <div class="position-relative form-group"><label for="city" class="">City</label>
+                             <select name="city" id="city" class="form-control select">
+                                 <option>Select City</option>
+                               
+                             </select>
+                           </div>
+                         
+                     </div>
+                     <div class="col-md-6">
+                         <div class="position-relative form-group">
+                             <label for="postal_code" class="">Postal Code</label>
                              <input name="postal_code" id="postal_code" placeholder="Enter Postal Code" type="text"  class="form-control" value="{{old('postal_code')}}">
                          </div>
                      </div>
@@ -133,6 +176,8 @@ EOD;
                      
 EOD;
 $countryscript = <<<EOD
+
+
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
@@ -175,7 +220,7 @@ EOD;
             $createcolumns .= <<<EOD
                         
                         <div class="position-relative form-group">
-                            <label for="" class="">$column</label>
+                            <label for="$column" class="">$column</label>
                             <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="">
                         </div>
             
@@ -184,7 +229,7 @@ EOD;
                 $editcolumns .= <<<EOD
                             
                             <div class="position-relative form-group">
-                                <label for="" class="">$column</label>
+                                <label for="$column" class="">$column</label>
                                 <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="{{$getvalue}}">
                             </div>
 EOD;
@@ -200,12 +245,14 @@ EOD;
     public function createform($tablename, $createcolumns){
 
         $lowerplural = Str::lower(Str::plural($tablename));
+        $lowersingular = Str::lower(Str::singular($tablename));
 
         $code = <<<EOD
+
         <div class="col-md-8">
             <div class="main-card mb-3 card">
             // @include('partials.alert')
-                <div class="card-body"><h5 class="card-title">Add Sectors</h5>
+                <div class="card-body"><h5 class="card-title">Add $lowersingular</h5>
                     <form class="" method="post" action="{{route('$lowerplural.store')}}" enctype="multipart/form-data">
                     @csrf
                         $createcolumns
@@ -225,10 +272,11 @@ EOD;
         $lowersingular = Str::lower(Str::singular($tablename));
 
         $code = <<<EOD
+        
         <div class="col-md-8">
             <div class="main-card mb-3 card">
             // @include('partials.alert')
-                <div class="card-body"><h5 class="card-title">Add Sectors</h5>
+                <div class="card-body"><h5 class="card-title">Edit $lowersingular</h5>
                     <form class="" method="post" action="{{route('$lowerplural.update',$$lowersingular ->id)}}" enctype="multipart/form-data">
                     @csrf
                         $editcolumns
