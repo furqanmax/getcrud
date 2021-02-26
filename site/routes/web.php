@@ -23,6 +23,12 @@ Route::get('/', function () {
     return view('visitorsplayground');
 });
 
+Route::get('/connect', function () {
+    return view('contact');
+});
+
+Route::post('/contact', 'VisitorController@mail')->name('mail');
+
 Auth::routes();
 Route::get('/testhome', 'HomeController@home');
 

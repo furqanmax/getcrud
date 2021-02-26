@@ -7,6 +7,9 @@ use Storage;
 use File;
 use App\Traits\getDataTrait;
 use App\Traits\laravelTrait;
+use App\Mail\ContactMail;
+use App\Mail\ThanksMail;
+use Mail;
 
 
 class VisitorController extends Controller
@@ -136,4 +139,17 @@ class VisitorController extends Controller
         
        
     }
+
+    public function mail(Request $request){
+        $this->validate($request,[
+              'name'=>'required',
+              'email'=>'required',
+              'subject'=>'required',
+              'message'=>'required',
+           ]);
+        Mail::to('furqanmax27@gmail.com')->send(new ContactMail($request));
+           Mail::to($request['email'])->send(new ThankMail($request));
+          return redirect()->back();
+        
+     }
 }
