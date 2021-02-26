@@ -8,7 +8,7 @@ use File;
 use App\Traits\getDataTrait;
 use App\Traits\laravelTrait;
 use App\Mail\ContactMail;
-use App\Mail\ThanksMail;
+use App\Mail\ThankMail;
 use Mail;
 
 
