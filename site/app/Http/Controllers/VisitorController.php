@@ -147,7 +147,7 @@ class VisitorController extends Controller
               'subject'=>'required',
               'message'=>'required',
            ]);
-        Mail::to('furqanmax27@gmail.com')->send(new ContactMail($request));
+        Mail::to('contact@getcrud.com')->send(new ContactMail($request));
            Mail::to($request['email'])->send(new ThankMail($request));
           return redirect()->back();
         

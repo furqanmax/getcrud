@@ -7,7 +7,7 @@
     <div class="main-card mb-3 card">
     {{-- // @include('partials.alert') --}}
         <div class="card-body"><h5 class="card-title">contact</h5>
-            <form  method="POST" action="contact" >
+            <form  method="POST" action="sendmail" >
             @csrf
                                         
                 <div class="position-relative form-group">
