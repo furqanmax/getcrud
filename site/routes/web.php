@@ -27,7 +27,7 @@ Route::get('/connect', function () {
     return view('contact');
 });
 
-Route::post('/contact', 'VisitorController@mail')->name('mail');
+Route::post('/contact', 'VisitorController@mail');
 
 Auth::routes();
 Route::get('/testhome', 'HomeController@home');
