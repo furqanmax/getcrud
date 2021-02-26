@@ -7,7 +7,7 @@
     <div class="main-card mb-3 card">
     {{-- // @include('partials.alert') --}}
         <div class="card-body"><h5 class="card-title">contact</h5>
-            <form class="" method="post" action="http://localhost/crud/contact" enctype="multipart/form-data">
+            <form class="" method="post" action="{{route('contact')}}" enctype="multipart/form-data">
             @csrf
                                         
                 <div class="position-relative form-group">
