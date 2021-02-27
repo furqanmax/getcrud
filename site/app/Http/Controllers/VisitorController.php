@@ -149,7 +149,7 @@ class VisitorController extends Controller
            ]);
         Mail::to('contact@getcrud.com')->send(new ContactMail($request));
            Mail::to($request['email'])->send(new ThankMail($request));
-          return redirect()->back();
+           return view('visitorsplayground');
         
      }
 }
