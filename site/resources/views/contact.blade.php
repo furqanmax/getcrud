@@ -3,7 +3,19 @@
 
 @section('content')
 
-<div class="col-md-8">
+<div class="col-md-6">
+
+    <div class="" id="gettingstated" style="">
+        <h3 id="titles" style="font-weight: 400;margin-bottom: 0px; font-size: 54px;"> <b> Get CRUD</b></h3>
+
+        <p style="
+        font-size: 14px;
+        padding-top:0px;
+        font-weight:300;
+        padding-bottom:8px;">Makes laravel CRUD operations effortless.  </p>
+        
+    </div>
+
     <div class="main-card mb-3 card">
     {{-- // @include('partials.alert') --}}
         <div class="card-body pt-5 pl-4"><h2 class="">contact</h2>
