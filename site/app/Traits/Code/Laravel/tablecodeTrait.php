@@ -52,7 +52,7 @@ trait tablecodeTrait {
                   <h3 class="box-title text-color">$ucfirstsingular</h3>
               </div>
               <div class="col-md-6 text-right">
-                  <a href="{{route('$lowerplural.create')}}" class="btn btn-sm px-4 btn-custom">;<i class="fa fa-plus"></i>&nbsp; Add new Image</a>
+                  <a href="{{route('$lowerplural.create')}}" class="btn btn-sm px-4 btn-custom">;<i class="fa fa-plus"></i>&nbsp; Add new $ucfirstsingular</a>
               </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ trait tablecodeTrait {
                         <td>
                             <div class="row">
                                 <div class="col-md-2">
-                                    <a href="{{route('$lowerplural.edit',\$$lowersingular ->id)}}" class=" " style="margin-left: 5px;"><i class="fa fa-edit icon fa-1x"></i> </a>
+                                    <a href="{{route('$lowerplural.edit',\$$lowersingular ->id)}}" class=" " style="margin-left: 5px;"><i class="fa fa-edit icon fa-1x"></i> Edit</a>
 
                                 </div>
                                 <div class="col-md-2">
@@ -83,7 +83,7 @@ trait tablecodeTrait {
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"  class="" style="margin-left: 5px;">
-                                            <i class="fa fa-trash icon fa-1x">;</i>;</button>
+                                            <i class="fa fa-trash icon fa-1x"></i>Delete</button>
                                     </form>
                                 </div>
                                 <div class="col-md-2">

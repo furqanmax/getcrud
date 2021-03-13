@@ -40,6 +40,7 @@ trait formcodeTrait {
         
         $column = $value['column'];
         $lowersingular = Str::lower(Str::singular($table));
+        $lowerplural = Str::lower(Str::plural($table));
         
         if(isset($value['required'])){
             $validate .= "";
@@ -56,12 +57,12 @@ trait formcodeTrait {
                         </div>         
 EOD;
 
-            $getvalue = $lowersingular."->".$column;
+            $getvalue = $lowerplural."->".$column;
             $editcolumns .= <<<EOD
                             
                         <div class="position-relative form-group">
                             <label for="$column" class="">$column</label>
-                            <input name="$column" id="id_$column" type="file" placeholder="$column"  class="form-control-file" value="{{$getvalue}}">
+                            <input name="$column" id="id_$column" type="file" placeholder="$column"  class="form-control-file" value="{{ $getvalue }}">
                         </div>
 EOD;
         }else{
@@ -82,7 +83,7 @@ EOD;
                             
                         <div class="position-relative form-group">
                             <label for="$column" class="">$column</label>
-                            <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{$getvalue}}">
+                            <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{ $getvalue }}">
                         </div>
 EOD;
 
@@ -230,7 +231,7 @@ EOD;
                             
                             <div class="position-relative form-group">
                                 <label for="$column" class="">$column</label>
-                                <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="{{$getvalue}}">
+                                <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="{{ $getvalue }}">
                             </div>
 EOD;
 
@@ -251,7 +252,7 @@ EOD;
 
         <div class="col-md-8">
             <div class="main-card mb-3 card">
-            // @include('partials.alert')
+            
                 <div class="card-body"><h5 class="card-title">Add $lowersingular</h5>
                     <form class="" method="post" action="{{route('$lowerplural.store')}}" enctype="multipart/form-data">
                     @csrf
@@ -275,9 +276,9 @@ EOD;
         
         <div class="col-md-8">
             <div class="main-card mb-3 card">
-            // @include('partials.alert')
+            
                 <div class="card-body"><h5 class="card-title">Edit $lowersingular</h5>
-                    <form class="" method="post" action="{{route('$lowerplural.update',$$lowersingular ->id)}}" enctype="multipart/form-data">
+                    <form class="" method="post" action="{{route('$lowerplural.update',$$lowerplural ->id)}}" enctype="multipart/form-data">
                     @csrf
                         $editcolumns
                         <button class="mt-1 btn btn-primary" type="submit">Submit</button>
