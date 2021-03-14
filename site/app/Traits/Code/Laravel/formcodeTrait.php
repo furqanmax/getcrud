@@ -67,7 +67,7 @@ EOD;
 EOD;
         }else{
 
-            $getvalue = $lowersingular."->".$column;
+            $getvalue = $lowerplural."->".$column;
 
             if(Str::contains($column ,"date")){
 
@@ -83,7 +83,7 @@ EOD;
                             
                         <div class="position-relative form-group">
                             <label for="$column" class="">$column</label>
-                            <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{ $getvalue }}">
+                            <input name="$column" id="id_$column" type="date" placeholder="$column"  class="form-control" value="{{ $$getvalue }}">
                         </div>
 EOD;
 
