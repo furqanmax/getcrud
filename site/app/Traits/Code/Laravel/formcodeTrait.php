@@ -279,6 +279,7 @@ EOD;
             
                 <div class="card-body"><h5 class="card-title">Edit $lowersingular</h5>
                     <form class="" method="post" action="{{route('$lowerplural.update',$$lowerplural ->id)}}" enctype="multipart/form-data">
+                    @method('PATCH')
                     @csrf
                         $editcolumns
                         <button class="mt-1 btn btn-primary" type="submit">Submit</button>
