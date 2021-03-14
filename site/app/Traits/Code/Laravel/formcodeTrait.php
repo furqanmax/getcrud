@@ -62,7 +62,7 @@ EOD;
                             
                         <div class="position-relative form-group">
                             <label for="$column" class="">$column</label>
-                            <input name="$column" id="id_$column" type="file" placeholder="$column"  class="form-control-file" value="{{ $getvalue }}">
+                            <input name="$column" id="id_$column" type="file" placeholder="$column"  class="form-control-file" value="{{ $$getvalue }}">
                         </div>
 EOD;
         }else{
@@ -231,7 +231,7 @@ EOD;
                             
                             <div class="position-relative form-group">
                                 <label for="$column" class="">$column</label>
-                                <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="{{ $getvalue }}">
+                                <input name="$column" id="id_$column" placeholder="$column"  class="form-control" value="{{ $$getvalue }}">
                             </div>
 EOD;
 
