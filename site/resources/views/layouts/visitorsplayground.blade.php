@@ -9,11 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-    <script src="{{ asset('/js/visitorcontroller.js') }}" defer></script>
-    
-
+   
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WG10JJP8Z2"></script>
     <script>
@@ -37,18 +33,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
    
 
-    <!-- Styles -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs2015.min.css"> --}}
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/night-owl.min.css"> 
-
-    {{-- <script src="{!! mix('js/test.js') !!}"></script> --}}
-   
+  
 
     <style>
         body{
@@ -144,4 +129,22 @@
     
    
 </body>
+ <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+    <script src="{{ asset('/js/visitorcontroller.js') }}" defer></script>
+    
+
+      <!-- Styles -->
+      <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+      <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+      {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs2015.min.css"> --}}
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/night-owl.min.css"> 
+  
+      {{-- <script src="{!! mix('js/test.js') !!}"></script> --}}
+     
+
 </html>
