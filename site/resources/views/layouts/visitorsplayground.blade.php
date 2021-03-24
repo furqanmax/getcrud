@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name=”description” content="Makes laravel CRUD operations effortless. Get CRUD is one of the most effective approach to CRUD, as it helps improve your effiency and reduces developemt time.">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
