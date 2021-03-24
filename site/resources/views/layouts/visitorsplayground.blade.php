@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WG10JJP8Z2"></script>
@@ -134,9 +137,7 @@
     <script src="{{ asset('/js/visitorcontroller.js') }}" defer></script>
     
 
-      <!-- Styles -->
-      <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-      <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+      
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
