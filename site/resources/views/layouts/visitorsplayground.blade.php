@@ -131,9 +131,6 @@
         
         Plaease share your valuable suggations.
         <br><br>
-        Designed and developed by <br>
-        <a href="http://toaplex.com/public/">ToaPlex LLP</a>
-
         
         <br><br>
          © 2021 GetCRUD | <a href="contact">Contact</a> 
