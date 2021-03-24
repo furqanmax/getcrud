@@ -132,7 +132,7 @@
         Plaease share your valuable suggations.
         <br><br>
         
-        <br><br>
+     
          © 2021 GetCRUD | <a href="contact">Contact</a> 
 
      
