@@ -386,6 +386,8 @@ async function serverSideRendering(renderform) {
 
     document.getElementById("API_resource_code").innerHTML = code.API_resource_code;
 
+    document.getElementById("Migration_code").innerHTML = code.Migration_code;
+
     // document.getElementById("Download_zip").href = code.Download_zip;
 
 
@@ -395,6 +397,7 @@ async function serverSideRendering(renderform) {
     hljs.highlightBlock(API_resource_code);
     hljs.highlightBlock(Create_form_code);
     hljs.highlightBlock(Edit_form_code);
+    hljs.highlightBlock(Migration_code);
 }
 
 

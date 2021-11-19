@@ -7,6 +7,7 @@ use App\Traits\Code\Laravel\tablecodeTrait;
 use App\Traits\Code\Laravel\APIcodeTrait;
 use App\Traits\Code\Laravel\formcodeTrait;
 use App\Traits\Code\Laravel\writetofileTrait;
+use App\Traits\Code\Laravel\migrationTrait;
 
 use App\Traits\makeZipTrait;
 
@@ -14,7 +15,7 @@ use App\Traits\makeZipTrait;
 
 trait laravelTrait {
  
-    use tablecodeTrait, controllercodeTrait, APIcodeTrait, formcodeTrait, writetofileTrait, makeZipTrait;
+    use tablecodeTrait, controllercodeTrait, APIcodeTrait, formcodeTrait, writetofileTrait, makeZipTrait, migrationTrait;
 
 
     public function composeController($tablename, $columnname) {
@@ -106,6 +107,13 @@ trait laravelTrait {
         $getzipstatus = $this->downloadZip($productPath = '', $dirName = '', $overwrite = false);
 
         return $getzipstatus;
+    }
+
+    public function makeMigration($tablename, $columnname){
+
+        $makeMigrationCode = $this->migrationCode($tablename, $columnname);
+
+        return $makeMigrationCode;
     }
 
 

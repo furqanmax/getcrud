@@ -129,6 +129,8 @@ class HomeController extends Controller
         
         list($createFormCode, $editFormCode) = $this->makeForm($TableName, $allcolumns);
 
+        $migrationCode = $this->makeMigration($TableName, $allcolumns);
+        // return $migrationCode;
         
         $filename = "download";
         
@@ -140,6 +142,7 @@ class HomeController extends Controller
             'Create_form' => $createFormCode,
             'Edit_form' => $editFormCode, 
             'Download_zip' => $filename,
+            'migration_code' => $migrationCode,
         ]);
         // // Storage::put('second.txt', $data);
         
