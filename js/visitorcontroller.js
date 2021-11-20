@@ -483,7 +483,7 @@ async function tablesave() {
 async function serverSideRendering(renderform) {
     console.log(renderform);
 
-    var res = $.get('visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('/visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
     try {
         let response = await res;
         code = res.responseJSON;
