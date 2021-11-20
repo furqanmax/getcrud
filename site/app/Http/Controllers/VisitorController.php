@@ -101,7 +101,13 @@ class VisitorController extends Controller
     }
 
 
+    public function tsaveserver(Request $request){
 
+        $TableName = $this->getTable($request);
+
+        
+
+    }
 
     public function makecontrollerserver(Request $request)
     {

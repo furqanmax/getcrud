@@ -224,6 +224,7 @@ function handle(e, id, num) {
     // console.log(parentid);
 
     var renderform = document.getElementById(parentid).parentElement.id;
+    // console.log("-----------" + renderform);
     var renderform = "#" + document.getElementById(renderform).parentElement.id;
     // console.log(renderform);
 
@@ -249,6 +250,8 @@ function handle(e, id, num) {
         // }
 
         document.getElementById("pn").style.display = "none";
+        document.getElementById("tsave").style.display = "inline";
+        document.getElementById("thistory").style.display = "inline";
         // document.getElementById("inserttab").style.display = "none";
         document.getElementById("all_code_tabs").style.display = "block";
         document.getElementById("gettingstated").style.color = "#d9d9d9";
@@ -359,6 +362,29 @@ function clientSideRendering() {
     var controllercode = document.getElementById('Controller').textContent;
 
     $.get('makecontrollerclient?message=' + controllercode)
+}
+
+async function tablesave() {
+
+    // var parentid = document.getElementById(item).parentElement.id;
+    // var parentid = document.getElementById(parentid).parentElement.id;
+    // var renderform = document.getElementById(parentid).parentElement.id;
+    var renderform = "#" + document.getElementById("section0").parentElement.id;
+
+
+    var res = $.get('tablesave?' + $(renderform).serialize(), function(data) {});
+    // let response = await res;
+    var code = "";
+    try {
+        let response = await res;
+        code = res.responseJSON;
+    } catch (e) {
+        console.log(e);
+    }
+
+    // var code = response.responseJSON;
+    console.log(code.status);
+    // document.getElementById("phpservercode").innerHTML = code.controller_code;
 }
 
 async function serverSideRendering(renderform) {
@@ -616,6 +642,8 @@ function handleforms(e) {
         }
 
         document.getElementById("pn").style.display = "none";
+        document.getElementById("tsave").style.display = "none";
+        document.getElementById("thistory").style.display = "none";
         document.getElementById("gettingstated").style.display = "none";
 
         // document.getElementById("titles").style.display="none";

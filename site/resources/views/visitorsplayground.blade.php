@@ -76,12 +76,37 @@
                         <section id="section0" class="drag-sort-enable" >
 
                             <h5 id="inserttab" style="font-size:18px; font-weight:500; padding-bottom: 8px;"> Insert the table name, hit enter to be amazed.</h5>
-                            
+
+                            <span id="tsave" class=" label tooltip-test" style="display: none;" onclick="tablesave()"  title="Save ">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17 19H3C2.46957 19 1.96086 18.7893 1.58579 18.4142C1.21071 18.0391 1 17.5304 1 17V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H14L19 6V17C19 17.5304 18.7893 18.0391 18.4142 18.4142C18.0391 18.7893 17.5304 19 17 19Z" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15 19V11H5V19" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M5 1V6H13" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    
+                                    
+                                    
+                            </span>
+
+                            <a href="{{url('history')}}">
+                                <span id="thistory" class=" label tooltip-test" style="display: none;"   title="History ">
+
+                                    <svg width="20" height="18" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 2V8H7" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M11 5V11L15 13" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.51 13C4.15839 14.8404 5.38734 16.4202 7.01166 17.5014C8.63598 18.5826 10.5677 19.1066 12.5157 18.9945C14.4637 18.8824 16.3226 18.1402 17.8121 16.8798C19.3017 15.6193 20.3413 13.909 20.7742 12.0064C21.2072 10.1037 21.0101 8.11196 20.2126 6.3311C19.4152 4.55024 18.0605 3.07679 16.3528 2.13276C14.6451 1.18873 12.6769 0.825262 10.7447 1.09712C8.81245 1.36897 7.02091 2.26142 5.64 3.64L1 8" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        
+                                        
+                                </span>
+                            </a>
                             <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
                                 <li class="" id="gggg0"  >
                                     {{-- <label for="f0">Table name</label>&nbsp;&nbsp;&nbsp;&nbsp; --}}
                                     <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,0)" id="tablename0" name="tablename" >
                                     {{-- <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()"> --}}
+                                    
+                                    
                                 </li>
                                 <!-- <button class="add_field_button">Add col</button> -->
                                 {{-- <li class="list-item dragdots" id="hcol0"  style="display: none;">

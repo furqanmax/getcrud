@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/visitormakecontrollerserver', 'VisitorController@makecontrollerserver');
+Route::get('/tablesave', 'TsaveController@store');
+Route::get('/history', 'TsaveController@index');
+// Route::get('savetables.destroy', 'TsaveController@destroy');
 
 Route::get('/', function () {
     return view('visitorsplayground');
