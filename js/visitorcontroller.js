@@ -465,7 +465,7 @@ async function tablesave() {
     var renderform = "#" + document.getElementById("section0").parentElement.id;
 
 
-    var res = $.get('/crud/tablesave?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('tablesave?' + $(renderform).serialize(), function(data) {});
     // let response = await res;
     var code = "";
     try {
@@ -483,7 +483,7 @@ async function tablesave() {
 async function serverSideRendering(renderform) {
     console.log(renderform);
 
-    var res = $.get('/crud/visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
     try {
         let response = await res;
         code = res.responseJSON;
