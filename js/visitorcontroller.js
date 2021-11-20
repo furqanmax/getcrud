@@ -226,7 +226,7 @@ function handle(e, id, num) {
     var renderform = document.getElementById(parentid).parentElement.id;
     // console.log("-----------" + renderform);
     var renderform = "#" + document.getElementById(renderform).parentElement.id;
-    // console.log(renderform);
+    // console.log(renderform + "----------");
 
 
 
@@ -267,6 +267,7 @@ function handle(e, id, num) {
             // textbox.scrollIntoView();
             serverSideRendering(renderform);
             var parentid = "#" + parentid;
+            console.log(parentid + "--------------------------");
             var cod = ` <li id="hcol` + x + `" class="list-item dragdots" draggable="true" ondragstart="drag(event)">
                         
                             <input class="m-0"  type="text" placeholder="column name" id="` + x + `" name="textfieldcolumn[` + x + `]" autofocus onkeypress="handle(event,this.id)" /> 
@@ -315,6 +316,98 @@ function handle(e, id, num) {
 
         }
     }
+}
+
+
+
+function makesavedform(savedcolumns) {
+    console.log(x);
+    var renderform = "#" + document.getElementById("section0").parentElement.id;
+
+
+    document.getElementById("pn").style.display = "none";
+    document.getElementById("tsave").style.display = "inline";
+    document.getElementById("thistory").style.display = "inline";
+    // document.getElementById("inserttab").style.display = "none";
+    document.getElementById("all_code_tabs").style.display = "block";
+    document.getElementById("gettingstated").style.color = "#d9d9d9";
+    document.getElementById("inserttab").style.color = "#d9d9d9";
+
+    // serverSideRendering(renderform);
+    $.each(savedcolumns, function(index, value) {
+        // serverSideRendering(renderform);
+        x++;
+        var cod = ` <li id="hcol` + index + `" class="list-item dragdots" draggable="true" ondragstart="drag(event)">
+                        
+                        <input class="m-0"  type="text" placeholder="column name" id="` + index + `" name="textfieldcolumn[` + index + `]" autofocus onkeypress="handle(event,this.id)" value = "` + value.column + `"/> 
+                        
+                        <label id="lbf[` + index + `]" for="f` + index + `">
+                            <input type="checkbox" id="f` + index + `" name="checkboxfile[` + index + `]" onclick="myFunction(this.id)" class="checkbox-custom">
+                            <span  class="label tooltip-test"  title="File ">
+                            <svg id="Capa_1" enable-background="new 0 0 512 512" height="18" viewBox="0 0 512 512" width="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <g>
+                                    <path d="m446.605 124.392-119.997-119.997c-2.801-2.802-6.624-4.395-10.608-4.395h-210c-24.813 0-45 20.187-45 45v422c0 24.813 20.187 45 45 45h300c24.813 0 45-20.187 45-45v-332c0-4.09-1.717-7.931-4.395-10.608zm-115.605-73.179 68.787 68.787h-53.787c-8.271 0-15-6.729-15-15zm75 430.787h-300c-8.271 0-15-6.729-15-15v-422c0-8.271 6.729-15 15-15h195v75c0 24.813 20.187 45 45 45h75v317c0 8.271-6.729 15-15 15z"/>
+                                    <path d="m346 212h-180c-8.284 0-15 6.716-15 15s6.716 15 15 15h180c8.284 0 15-6.716 15-15s-6.716-15-15-15z"/>
+                                    <path d="m346 272h-180c-8.284 0-15 6.716-15 15s6.716 15 15 15h180c8.284 0 15-6.716 15-15s-6.716-15-15-15z"/>
+                                    <path d="m346 332h-180c-8.284 0-15 6.716-15 15s6.716 15 15 15h180c8.284 0 15-6.716 15-15s-6.716-15-15-15z"/>
+                                    <path d="m286 392h-120c-8.284 0-15 6.716-15 15s6.716 15 15 15h120c8.284 0 15-6.716 15-15s-6.716-15-15-15z"/>
+                                </g>
+                            </svg>
+                                
+                            </span>
+                        </label>
+                            
+                        
+
+                        <label id="lbr[` + index + `]" for="r` + index + `">
+                        <input type="checkbox" id="r` + index + `" name="checkbioxrequired[` + index + `]" onclick="myFunction(this.id)">
+                        <span  class="label tooltip-test"  title="Required">
+                        <svg enable-background="new 0 0 24 24" height="18" viewBox="0 0 24 24" width="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m13.5 23h-3c-.827 0-1.5-.673-1.5-1.5v-4.304l-3.73 2.156c-.357.2-.765.252-1.153.143-.382-.106-.698-.355-.893-.701l-1.496-2.594c-.416-.713-.175-1.635.54-2.052l3.722-2.148-3.72-2.147c-.717-.418-.958-1.34-.541-2.055l1.499-2.598c.19-.34.507-.589.889-.695.387-.109.796-.061 1.149.14l3.734 2.159v-4.304c0-.827.673-1.5 1.5-1.5h3c.827 0 1.5.673 1.5 1.5v4.304l3.73-2.156c.356-.202.763-.253 1.153-.143.382.106.698.355.893.701l1.496 2.594c.416.713.175 1.635-.54 2.052l-3.722 2.148 3.721 2.147c.717.418.958 1.34.541 2.055l-1.5 2.598c-.19.34-.507.589-.889.695-.389.109-.797.059-1.149-.14l-3.734-2.159v4.304c0 .827-.673 1.5-1.5 1.5zm-4-7.17c.086 0 .173.022.25.067.154.089.25.254.25.433v5.17c0 .275.225.5.5.5h3c.275 0 .5-.225.5-.5v-5.17c0-.179.096-.344.25-.433.154-.09.346-.09.5 0l4.48 2.59c.116.064.254.082.383.045.125-.035.228-.115.29-.227l1.504-2.605c.143-.245.063-.547-.179-.688l-4.469-2.579c-.154-.089-.25-.254-.25-.433s.096-.344.25-.433l4.471-2.58c.24-.141.319-.442.178-.686l-1.501-2.601c-.066-.117-.169-.197-.294-.232-.131-.038-.268-.02-.387.048l-4.476 2.587c-.154.09-.346.09-.5 0-.154-.089-.25-.254-.25-.433v-5.17c0-.275-.225-.5-.5-.5h-3c-.275 0-.5.225-.5.5v5.17c0 .179-.096.344-.25.433-.154.09-.346.09-.5 0l-4.48-2.59c-.116-.064-.253-.081-.383-.045-.125.035-.228.115-.29.227l-1.504 2.605c-.143.245-.064.547.178.688l4.469 2.579c.155.089.25.254.25.433s-.096.344-.25.433l-4.471 2.58c-.24.141-.319.442-.178.686l1.502 2.601c.066.117.169.197.294.232.129.036.268.019.387-.048l4.477-2.587c.076-.044.163-.067.249-.067z"/>
+                        </svg>
+                        </span>
+                        </label>
+                            
+                        
+                        
+
+                        <button class="btn-danger " id="removeid` + index + `" onclick="removecolumn(event, this.id)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </button>
+                    </li>`;
+        $("#ultableid0").append(cod);
+        document.getElementById(x.toString()).focus();
+
+
+    });
+
+
+    // respp()
+    // async function respp() {
+    //     console.log($(renderform).serialize());
+
+    //     // console.log(res);
+    //     try {
+    //         var res = $.get('visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
+    //         var response = await res;
+    //         console.log(response + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    //         var code = res.responseJSON;
+    //         console.log(code);
+    //         code = code.statresus;
+    //         console.log(code);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }
+
+
+    var renderform = "#" + document.getElementById("section0").parentElement.id;
+    console.log(renderform);
+    serverSideRendering(renderform);
+
 }
 
 
@@ -372,7 +465,7 @@ async function tablesave() {
     var renderform = "#" + document.getElementById("section0").parentElement.id;
 
 
-    var res = $.get('tablesave?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('/crud/tablesave?' + $(renderform).serialize(), function(data) {});
     // let response = await res;
     var code = "";
     try {
@@ -388,11 +481,13 @@ async function tablesave() {
 }
 
 async function serverSideRendering(renderform) {
+    console.log(renderform);
 
-    var res = $.get('visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('/crud/visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
     let response = await res;
     // console.log(res);
     var code = res.responseJSON;
+    console.log(code);
 
     document.getElementById("phpservercode").innerHTML = code.controller_code;
 
@@ -435,6 +530,8 @@ function writeanddownloadzip() {
     let response = res;
     // document.getElementById("zpiresponce").innerHTML = code.zipes;
 }
+
+
 
 function aj() {
 
@@ -688,3 +785,5 @@ function removetab(e, liid, tableid) {
     // document.getElementById("tabbtn" + toid).className += " active";
     // serverSideRendering("#table" + toid);
 }
+
+// window.onload = serverSideRendering("#tableForm0");

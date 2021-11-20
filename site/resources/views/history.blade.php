@@ -23,30 +23,34 @@
           <tbody>
               <?php $i=1;?>
               @foreach($savetables as $savetable)
-                  <tr>
-                  <td>{{$i}}</td><br>
+              
+                <tr>
+                    
+                    <td>{{$i}}</td><br>
+                    
+                    <td><a href="{{url('/saved/'.$savetable ->id."/".$savetable ->table_name)}}">{{$savetable->table_name}}</a></td>
+                    <td>{{$savetable->columns}}</td>
+  
+                    <td>
+                        <div class="row">
+                            
+                            <div class="col-md-2">
+                                <form action="{{ route('savetables.destroy',$savetable ->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"  class="label" value="Delete" >Delete</button>
+                                </form>
+                            </div>
+                            <div class="col-md-2">
+                                {{-- <a href="{{route('savetables.show',$savetable ->id)}}" style="margin-left: 5px;" class="icon"><i class="fa fa-eye  fa-1x" ></i> </span></a> --}}
+  
+                            </div>
+                        </div>
+                    </td>
+                
+                    </tr>
+                
                   
-                  <td>{{$savetable->table_name}}</td>
-                  <td>{{$savetable->columns}}</td>
-
-                  <td>
-                      <div class="row">
-                          
-                          <div class="col-md-2">
-                              {{-- <form action="{{ route('savetables.destroy',$savetable ->id)}}" method="POST">
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit"  class="" style="margin-left: 5px;">
-                                      <i class="fa fa-trash icon fa-1x"></i>Delete</button>
-                              </form> --}}
-                          </div>
-                          <div class="col-md-2">
-                              {{-- <a href="{{route('savetables.show',$savetable ->id)}}" style="margin-left: 5px;" class="icon"><i class="fa fa-eye  fa-1x" ></i> </span></a> --}}
-
-                          </div>
-                      </div>
-                  </td>
-                  </tr>
               <?php $i++?>
               @endforeach
           </tbody>

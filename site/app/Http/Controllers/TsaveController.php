@@ -99,7 +99,7 @@ class TsaveController extends Controller
         public function edit($id)
         {
             $savetables = Savetable::findOrFail($id);
-            return view('savetables.edit',compact('savetables'));
+            return view('/savedtable',compact('savetables'));
         }        
 
 

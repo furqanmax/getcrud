@@ -105,14 +105,14 @@ class VisitorController extends Controller
 
         $TableName = $this->getTable($request);
 
-        
+
 
     }
 
     public function makecontrollerserver(Request $request)
     {
        
-        
+        // return response()->json(['restat' => $request]);
         $index = "";
 
         //  code is generated at server side
@@ -120,6 +120,10 @@ class VisitorController extends Controller
         $TableName = $this->getTable($request);
         $folderName = $this->getfolder($request);
         $allcolumns = $this->getColumns($request); 
+        // return response()->json([
+        //     'statresus' => $allcolumns,
+            
+        // ]);
 
         list($controllerCode, $getcountry) = $this->makeController($TableName, $folderName, $allcolumns); 
 

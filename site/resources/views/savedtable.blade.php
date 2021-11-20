@@ -1,4 +1,4 @@
-@extends('layouts.visitorsplayground')
+@extends('layouts.savedtable')
 
 @section('content')
 {{-- <div class="container">
@@ -60,7 +60,7 @@
             <div class="table_wrap">
                 <div class="tablecontent" id="table0">
                     <form id ="tableForm0" action="" method="GET" >
-                       
+                        @method('PATCH')
                         @csrf
                         <div style="display: none">
                             <input type="checkbox" checked="true" id="selectAll" name="selectAll" onclick="selectAllCheckboxes()">
@@ -104,7 +104,7 @@
                             <ul id="ultableid0" class="input_fields_wrap drag-sort-enable" >
                                 <li class="" id="gggg0"  >
                                     {{-- <label for="f0">Table name</label>&nbsp;&nbsp;&nbsp;&nbsp; --}}
-                                    <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,0)" id="tablename0" name="tablename" >
+                                    <input type="text" placeholder="Table name" autofocus="" onkeypress="handle(event,this.id,0)" id="tablename0" name="tablename"  value="{{ $savetables->table_name }}">
                                     {{-- <input type="text" placeholder="Folder name" id="folder" name="foldername" oninput="myFunction()"> --}}
                                     
                                     

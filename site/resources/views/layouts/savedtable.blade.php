@@ -105,7 +105,7 @@
 }
     </script>
 </head>
-<body >
+<body onload="makesavedform({{ $savetables->columns }})">
     <div id="app">
      
 

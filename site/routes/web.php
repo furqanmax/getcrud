@@ -26,6 +26,15 @@ Route::get('/', function () {
     return view('visitorsplayground');
 });
 
+Route::delete('history/{id}', 'TsaveController@destroy')->name('savetables.destroy');
+
+Route::get('/saved', function () {
+    return view('visitorsplayground');
+});
+
+Route::get('/saved/{id}/{table_nmae}', 'TsaveController@edit');
+Route::get('/saved/{id}/visitormakecontrollerserver', 'TsaveController@makecontrollerserver');
+
 Route::get('/contact', function () {
     return view('contact');
 });
