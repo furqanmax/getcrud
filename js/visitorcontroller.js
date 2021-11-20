@@ -465,7 +465,7 @@ async function tablesave() {
     var renderform = "#" + document.getElementById("section0").parentElement.id;
 
 
-    var res = $.get('tablesave?' + $(renderform).serialize(), function(data) {});
+    var res = $.get('/tablesave?' + $(renderform).serialize(), function(data) {});
     // let response = await res;
     var code = "";
     try {
