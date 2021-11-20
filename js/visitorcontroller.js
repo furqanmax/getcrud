@@ -484,7 +484,13 @@ async function serverSideRendering(renderform) {
     console.log(renderform);
 
     var res = $.get('/crud/visitormakecontrollerserver?' + $(renderform).serialize(), function(data) {});
-    let response = await res;
+    try {
+        let response = await res;
+        code = res.responseJSON;
+    } catch (e) {
+        console.log(e);
+    }
+    // let response = await res;
     // console.log(res);
     var code = res.responseJSON;
     console.log(code);
